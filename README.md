@@ -1,8 +1,18 @@
-# ada-2024-project-supercoolteamname2024
+# ADA-2024 Project - SuperCoolTeamName2024
 
--Epaissir les datas
--Profilage des votants
-  utiliser le site X-tools pour donner les 10 articles les plus modifiés a un LLM pour qu'il classifie le votant avec des catégories prédéfinie
--Etude des Bans/retirerment
--Courant de pensés dans les votes?
--
+## Project Overview
+
+### Objectives
+
+1. **Enhance Data Collection**  
+   Expand and enrich the dataset to capture relevant trends and patterns more comprehensively.
+
+2. **Voter Profiling**  
+   - Utilize **X-Tools** to identify the top 10 most modified articles.
+   - Use these articles as inputs for a large language model (LLM) to classify voters into predefined categories based on their editing behaviors.
+
+3. **Analysis of Bans/Withdrawals**  
+   Examine patterns and causes of user bans or withdrawals, identifying any correlations with voting behavior or content types.
+
+4. **Trends in Voting Philosophy**  
+   Investigate whether distinct philosophical trends or ideological currents influence voting patterns and decisions. 
