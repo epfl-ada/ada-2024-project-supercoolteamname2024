@@ -18,7 +18,7 @@ current_votes = None
 print("Starting to read and parse the file...\n")
 
 # Open and read the input file line by line
-with open(filename, 'r') as file:
+with open(filename, 'r',encoding="utf-8") as file:
     for line_number, line in enumerate(file, start=1):
         # Strip any extra whitespace from the line
         line = line.strip()
@@ -50,12 +50,12 @@ print(f"\nTotal number of votes cast: {total_votes}")
 sorted_votes = sorted(vote_counts.values(), reverse=True)
 
 # Write vote counts for each user to the stats output file
-with open(output_file_stats, 'w') as file:
+with open(output_file_stats, 'w',encoding="utf-8") as file:
     for user, votes in vote_counts.items():
         file.write(f"{user}: {votes} votes\n")
 
 # Write all unique SRC entries to the usernames output file
-with open(output_file_usernames, 'w') as file:
+with open(output_file_usernames, 'w',encoding="utf-8") as file:
     for src in sorted(unique_src_entries):  # Optional: sort usernames alphabetically
         file.write(src + '\n')
 
