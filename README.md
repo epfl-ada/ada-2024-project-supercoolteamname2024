@@ -22,16 +22,16 @@
 # Begin generated initial proposal md (outline to help us genereted by chatGPT)
 
 # Title
-*Mapping the Dynamics of Wikipedia's RfA Process: Evolution of Influence and Candidate Lifecycle*
+*titre*
 
 ## Abstract
 
-*In this project, we aim to explore the evolving dynamics of Wikipedia's Requests for Adminship (RfA) process. By combining textual, network, and temporal analyses, we will investigate how key voters, arguments, and candidate reputations have shifted over time. Our goal is to tell the story of how community governance and standards have evolved, highlighting the interplay between voter influence, argument trends, and candidate trajectories. This analysis will provide valuable insights into the mechanisms of online community decision-making and the factors that contribute to successful adminship.*
+*In this project, we aim to explore the evolving dynamics of Wikipedia's Requests for Adminship (RfA) process. By combining textual(NLP), network, and temporal analyses(time series), we will investigate how key voters, arguments, and candidate reputations have shifted over time. Our goal is to tell the story of how community governance and standards have evolved, highlighting the interplay between voter influence, argument trends, and candidate trajectories. This analysis will provide valuable insights into the mechanisms of online community decision-making and the factors that contribute to successful adminship.*
 
 ## Research Questions
 
 1. **Evolution of Key Voters and Arguments**
-   - How have the most influential voters ("power voters") and their impact on RfA outcomes changed over time?
+   - How have the most influential voters ("power voters") and their impact on RfA outcomes changed over time? How to determine who they are?
    - What are the prevalent arguments in support or opposition during RfAs, and how have these arguments evolved?
 
 2. **Candidate Lifecycle Analysis**
@@ -39,19 +39,21 @@
    - How does community sentiment towards a candidate change before, during, and after their RfA?
 
 3. **Trends in Voting Philosophy**
-   - Are there identifiable philosophical or ideological trends that influence voting behaviors?
-   - How have community standards and expectations for adminship candidates shifted over the years?
+   - Are there identifiable philosophical or ideological trends that influence voting behaviors? Can we cluster voters around different philosophical/political trends?
+   - How have community standards and expectations for adminship candidates shifted over the years? Is there any evolution in the tolerance of the voters?
 
 ## Proposed Additional Datasets (if any)
 
 - **XTools Admin Score (XScore)**
-  - *We plan to scrape data from XTools to obtain detailed user contribution statistics.*
+  - *We scraped data from XTools to obtain detailed user contribution statistics.*
   - *This data will help quantify candidate activity levels, edit counts, and other relevant metrics.*
-  - *Data management will involve API interactions and adherence to Wikipedia's data usage policies.*
-  - *Expected data size is moderate; formats will be JSON or CSV for compatibility.*
+  - *Data management involved API interactions and adherence to Wikipedia's data usage policies.*
+  - *Data we found are stored into a csv and jason files*
+  - *We collect the top 10 modified articles by a user, so that we can try to classify voter into categories like, sciences, politics, history etc...*
+
 
 - **Wikipedia User Interaction Data**
-  - *We may extract data on user talk page interactions to map social networks.*
+  - *We want to extract data on user talk page interactions to map social networks, to know which voters are in contact with each others and thus determine a potential influence in their voting styles*
   - *Processing will include text parsing and network graph construction.*
 
 ## Methods
@@ -63,7 +65,7 @@
   - *Classify arguments (e.g., user conduct, technical expertise) and track their prevalence over time.*
 
 - **Sentiment Analysis**
-  - *Apply NLP tools to assess the sentiment of comments towards candidates.*
+  - *Apply NLP tools to assess the sentiment of comments towards candidates, we will use LLMs to help us classify and label the dataset.*
   - *Analyze how positive or negative sentiments correlate with RfA outcomes.*
 
 ### Network Analysis
@@ -73,7 +75,7 @@
   - *Identify "power voters" using centrality measures (e.g., PageRank, Betweenness).*
 
 - **Community Detection**
-  - *Use algorithms like Louvain method to find clusters within the voting network.*
+  - *Use algorithms like KKN or Louvain method to find clusters within the voting network.*
   - *Examine voting trends within and between clusters.*
 
 ### Temporal Analysis
