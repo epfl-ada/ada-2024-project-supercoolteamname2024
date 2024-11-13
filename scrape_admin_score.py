@@ -86,7 +86,7 @@ def save_to_csv(data, file_path):
 # Mod 3 = Eds
 # Mod 4 = Benoit
 
-mod_value = 0  # Change this to 1, 2, 3, or 4 as needed
+mod_value = 3  # Change this to 1, 2, 3, or 4 as needed
 
 for i, username in enumerate(usernames):
     # Process usernames where the index mod 5 matches the specified mod_value
