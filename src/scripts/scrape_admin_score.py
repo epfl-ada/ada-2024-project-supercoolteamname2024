@@ -5,21 +5,20 @@ from bs4 import BeautifulSoup
 
 # Load usernames from file
 file_path = 'usernames.txt'
-output_file = 'admin_scores.csv'
-
-with open(file_path, 'r', encoding='utf-8') as file:
-    usernames = [line.strip() for line in file.readlines()]
+output_file = 'admin_scores_ed3.csv'
+with open(output_file, 'r', encoding='ISO-8859-1') as csvfile:    
+    usernames = [line.strip() for line in csvfile.readlines()]
 
 # Load already processed usernames from the CSV file to avoid duplicate processing
-processed_users = set()
-try:
-    with open(output_file, 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            processed_users.add(row['username'])
-except FileNotFoundError:
+    processed_users = set()
+    try:
+        with open(output_file, 'r', encoding='ISO-8859-1') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                processed_users.add(row['username'])
+    except FileNotFoundError:
     # If the file doesn't exist, we'll create it when saving the results
-    pass
+        pass
 
 # Define base URL for XTools admin score
 base_url = "https://xtools.wmcloud.org/adminscore/en.wikipedia.org/{}"
@@ -86,11 +85,7 @@ def save_to_csv(data, file_path):
 # Mod 3 = Eds
 # Mod 4 = Benoit
 
-<<<<<<< HEAD
 mod_value = 3  # Change this to 1, 2, 3, or 4 as needed
-=======
-mod_value = 4  # Change this to 1, 2, 3, or 4 as needed
->>>>>>> 9d54725498d520794eff4501c72fdc5193aeabcd
 
 for i, username in enumerate(usernames):
     # Process usernames where the index mod 5 matches the specified mod_value
