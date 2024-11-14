@@ -12,12 +12,12 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 - How have community standards and expectations for adminship candidates evolved over time? Has there been a shift in voter tolerance levels? Did some of them became stricter or leaner? What are the dominant arguments in support or opposition of RfA candidates? Is there a different tolerance level when the person have the same subject of interest/category?
   
 ## Additional Datasets
-  - **Users Rating**:
+- **Users Rating**:
   - *On wikipedia, each users has an admin score that provide a concise overview of the user's administrative status. It take into account 12 factors such as Account Age, Edit Count, Recent activity, ..., that underline the user investment in the website. We will use that score as a metric for inter-user comparison.*
   - *The admin score has been found on XTools at this adress: https://xtools.wmcloud.org/adminscore*
     *We get it by requesting the HTLM of the webpage and scrapping it using Beautiful Soup*
 
- - **Users Main domain**:
+- **Users Main domain**:
   - *We also scraped the top 10 modified articles per user, enabling us to categorize voter topics by areas like science, politics, and history.*
 
 - **Wikipedia User Interaction Data**:
