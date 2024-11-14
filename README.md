@@ -18,7 +18,7 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
     *We get it by requesting the HTLM of the webpage and scrapping it using Beautiful Soup*
 
 - **Users Main domain**:
-  - *We also scraped the top 10 modified articles per user, enabling us to categorize voter topics by areas like science, politics, and history.*
+  - *We also scraped the top 10 modified articles per user on wikipedia users pages, enabling us to categorize voter topics by areas like science, politics, and history.*
 
 - **Wikipedia User Interaction Data**:
   - *Extract data from user talk page interactions to map social networks, identifying potential influence patterns among voters.*
