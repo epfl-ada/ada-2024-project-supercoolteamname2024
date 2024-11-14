@@ -32,6 +32,12 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *We use LLMs to classify/label voters into different topics/subject/areas of interest to avoid doing LDA. For this purpose we take the top 10 modified articles per user in order to assign at most 4 categories per user. Using LLM will allow to capture complex semantic relationships between words and phrases that traditional LDA might miss, leading to more accurate topic classification.*
   - *We take the 40 categories from the main topic classification on wikipedia that is in particular used to organise how to display the articles linked to in their various referencing systems in the website. These categories include for example culture, health, history or languages and can be found here: https://en.wikipedia.org/wiki/Category:Main_topic_classifications*
   - *Then the model Llama3.1 (8b) has been used locally in order to assign categories.*
+ 
+- **Users Rating**:
+  - *On wikipedia, each users has an admin score that provide a concise overview of the user's administrative status. It take into account 12 factors such as Account Age, Edit Count, Recent activity, ..., that underline the user investment in the website. We will use that score as a metric for inter-user comparison.*
+  - *The admin score has been found on XTools at this adress: https://xtools.wmcloud.org/adminscore*
+    *We get it by requesting the HTLM of the webpage and scrapping it using Beautiful Soup*
+  
 ### Network Analysis
 
 - **Voting Network Construction**:
