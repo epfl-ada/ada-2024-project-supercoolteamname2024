@@ -31,8 +31,8 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 
 - **Topic Modeling**:
   - *We will use LLMs to classify/label voters into different topics/subject/areas of interest to avoid doing LDA, we might also use it to analyse the text joined with the votes.*
-  - * We planed on taking different coarse for categories, trying with 10, 20 or more to guarantee we have enough data in each topic but still enough so that they are different enough
-
+  - * We take the 40 categories from the main topic classification on wikipedia that is in particular used to organise how to display the articles linked to in their various referencing systems in the website.
+    * These categories include for example culture, health, history or languages and can be found here: https://en.wikipedia.org/wiki/Category:Main_topic_classifications*
 ### Network Analysis
 
 - **Voting Network Construction**:
