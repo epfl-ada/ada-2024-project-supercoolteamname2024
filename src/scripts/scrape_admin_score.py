@@ -4,8 +4,8 @@ import csv
 from bs4 import BeautifulSoup
 
 # Load usernames from file
-file_path = 'usernames.txt'
-output_file = 'admin_scores_ed3.csv'
+file_path = '../../data/usernames.txt'
+output_file = '../../data/admin_scores_ed3.csv'
 with open(output_file, 'r', encoding='ISO-8859-1') as csvfile:    
     usernames = [line.strip() for line in csvfile.readlines()]
 

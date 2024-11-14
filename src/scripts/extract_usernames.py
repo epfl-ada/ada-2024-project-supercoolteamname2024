@@ -3,9 +3,9 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 
 # Replace 'filename.txt' with the path to your text file
-filename = 'wiki-RfA.txt'
-output_file_stats = 'user_votes_stats.txt'
-output_file_usernames = 'usernames.txt'
+filename = '../../data/wiki-RfA.txt'
+output_file_stats = '../../data/user_votes_stats.txt'
+output_file_usernames = '../../data/usernames.txt'
 
 # Dictionary to store vote counts for each user and a set for unique usernames
 vote_counts = defaultdict(int)
