@@ -36,7 +36,7 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *Identifying “power voters” using centrality measures (e.g., PageRank, Betweenness).*
 
 - **Community Detection**:
-  - *Employing clustering algorithms to detect clusters in the voting network. For this purpose two approach are explored, Louvain communauty finding algorithm and clustering using K-mean. The first approach is more about the graphical part and will allow to identify natural communities while the other one aim to cluster users based on voting behavior. The comparaison of them will provide some robustness if our result show similar behaviour.*
+  - *We apply clustering algorithms to detect patterns in the voting network, exploring two distinct approaches: the Louvain community detection algorithm and K-means clustering. The Louvain method focuses on the graph structure, identifying natural communities based on network connections. In contrast, K-means clusters users based on their voting behavior features. Comparing the results of both methods will help validate our findings, providing additional robustness if similar voting patterns are observed across both approaches.*
   - *With such clusters it will be possible to identify some voting pattern. We can for example consistently supportive, consistently opposing or mixed behavior. Also communities could be detected if we notice group of users that vote mostly in the same way. Additionally, we could detect if there is some similarities between the users inside a specific cluster (e.g. consistently opposing have on average lower admin score).*
 
 ![Uploading image.png…]()
