@@ -59,7 +59,7 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - Refine the voting network graph with recent classifications and scores.
   - Apply centrality measures (e.g., PageRank, Betweenness) to clearly identify influential “power voters.”
 - **Community Detection**:
-  - Conduct detailed clustering within the network using KKN or Louvain algorithms.
+  - Conduct detailed clustering within the network using K-mean or Louvain algorithms.
   - Analyze interaction patterns within and between identified communities to uncover voting trends.
 
 ### Week 12: Temporal and Lifecycle Analysis
