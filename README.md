@@ -6,10 +6,10 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 
 ## Research Questions
 
-- Can we detect “power voters” (influential voters) and quantify their impact on RfA outcomes? What defines their influence, how to capture it?
+- Can we detect “power voters” (influential voters) and quantify their impact on RfA outcomes? What defines their influence, how to capture it? How to make a difference bewtween someone who is an influencer and a sheep?
 - Can we classify voters into different thematical subject regarding the articles they modified? Are the voting style of people classified in a given subject similar? Is there identifiable philosophical or ideological trends that influence voting behaviors in these groups? Interaction between groups of thematical interest , are they voting systematically in a opposite way or the same? 
-- How does a candidate’s reputation and network position affect their probability of successful adminship, does the outcome of a RFA impact their level of activity within the network?
-- How have community standards and expectations for adminship candidates evolved over time? Has there been a shift in voter tolerance levels? Did some of them became stricter or leaner? What are the dominant arguments in support or opposition of RfA candidates? Is there a different tolerance level when the person have the same subject of interest/category?
+- How does a candidate’s reputation and network position affect their probability of successful adminship, does the outcome of a RFA have any link to the adminscore of a user?
+- How have community standards and expectations for adminship candidates evolved over time? Has there been a shift in voter tolerance levels? Did some of them became stricter or leaner? Is there a different tolerance level when the person have the same subject of interest/category?
   
 ## Additional Datasets
 - **Users Rating**:
