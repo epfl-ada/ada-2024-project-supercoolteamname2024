@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Our project investigates Wikipedia's Requests for Adminship (RfA) to understand the evolving dynamics of community governance and standards. By using textual analysis (NLP), network analysis, and temporal analysis, we aim to identify how key voters, argument trends, and candidate reputations have influenced RfA outcomes over time. We explore the evolution of influential "power voters," argument patterns, and candidate profiles to reveal insights into the mechanisms of online community decision-making and factors contributing to successful adminship. This study aims to offer a deep dive into the dynamics of influence, persuasion, and governance within Wikipedia’s ecosystem.
+Our project investigates Wikipedia's Requests for Adminship (RfA) to understand the evolving dynamics of community governance and standards. By using textual analysis (NLP), network analysis, and temporal analysis, we aim to identify how key voters, cluster appartenance, and candidate reputations have influenced RfA outcomes over time. We explore the evolution of influential "power voters," argument patterns, and candidate profiles to reveal insights into the mechanisms of online community decision-making and factors contributing to successful adminship. This study aims to offer a deep dive into the dynamics of influence, persuasion, and governance within Wikipedia’s ecosystem.
 
 ## Research Questions
 
@@ -53,46 +53,34 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *Identifying changes in votant's behavior over time, we will use classical Time Series theory tools in order to distinguish/discover trends*
   - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? does the areas of interest matter?.*
 
-a
+
 ## Milestone Program and Team Organization
 
 ### Week 10: Initial Validation and Refinement
 - **Tasks**:
   - Validate classification results and admin scores.
   - Define metrics for reputation and influence.
-- **Team**:
-  - Tallula: Validate admin scores and user classifications.
-  - Benoît: Define reputation metrics and ensure data consistency.
+
 
 ### Week 11: Advanced Network Analysis
 - **Tasks**:
   - Refine the voting network graph and identify “power voters.”
   - Apply Louvain and K-means clustering to detect voting patterns.
-- **Team**:
-  - Édouard: Refine the network graph and calculate centrality measures.
-  - Gal: Assist with cluster analysis and compare clustering methods.
+
 
 ### Week 12: Temporal Analysis
 - **Tasks**:
   - Analyze time series trends in voting behavior and tolerance levels.
   - Study the evolution of community standards and their impact on outcomes.
-- **Team**:
-  - Gal: Lead time series analysis and identify key temporal trends.
-  - Malen: Analyze how temporal trends align with thematic voting patterns.
+
 
 ### Week 13: Cross-Validation and Synthesis
 - **Tasks**:
   - Cross-validate findings across network, textual, and temporal analyses.
   - Synthesize insights on adminship success factors.
-- **Team**:
-  - Benoît: Lead cross-validation and synthesize results.
-  - All team members: Review and refine findings collaboratively.
+
 
 ### Week 14: Finalization and Submission
 - **Tasks**:
   - Finalize visualizations, report, and code documentation.
   - Submit the completed project.
-- **Team**:
-  - Benoît: Coordinate final report and submission.
-  - Tallula: Prepare final visualizations.
-  - All team members: Contribute to final review and polishing.
