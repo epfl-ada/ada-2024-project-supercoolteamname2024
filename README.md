@@ -88,4 +88,16 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 - **Code and Documentation**:
   - Prepare the setup to submit the final git.
 
-## Organisation
+## Organisation milestones
+
+- **Preprocessing**:
+  - Obtain unique usernames
+  - Update usernames for people who changed them
+- **Augmentation**:
+  - Obtain admin scores for users that have one
+  - Obtain top articles of users
+  - Use top articles of users to classify their top categories of interest using LLM
+- **Cleanup**:
+  - Remove users with unsufficient data
+  - Remove users without admin score
+- **EDA**:
