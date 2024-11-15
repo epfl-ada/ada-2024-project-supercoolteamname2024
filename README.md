@@ -46,12 +46,8 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 
 - **Time Series Analysis**:
   - *Tracking changes in key metrics like vote participation rate, tolerance rate over time.*
-  - *Identifying changes in behaviors over time.*
-
-- **Lifecycle Modeling**:
-  - *Mapping candidate activities across timeframes surrounding RfA events.*
-  - *Assessing how prior activities influence the likelihood of RfA success.*
-
+  - *Identifying changes in votant's behavior over time, we will use classical Time Series theory tools in order to distinguish/discover trends*
+  - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? does the areas of interest matter?.*
 ## Proposed Timeline
 
 ### Week 10: Final Data Refinement and Initial In-Depth Analysis
