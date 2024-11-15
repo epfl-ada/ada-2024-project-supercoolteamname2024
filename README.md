@@ -37,7 +37,10 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 
 - **Community Detection**:
   - *Employing clustering algorithms to detect clusters in the voting network. For this purpose two approach are explored, Louvain communauty finding algorithm and clustering using K-mean. The first approach is more about the graphical part and will allow to identify natural communities while the other one aim to cluster users based on voting behavior. The comparaison of them will provide some robustness if our result show similar behaviour.*
-  - *With such clusters it will be possible to identify some voting pattern. We can for example consistently supportive, consistently opposing or mixed behavior. Also communities could be detected if we notice group of users that vote mostly in the same way. Additionally, we could detect if there is some similarities between the users inside a specific cluster (e.g. consistently opposing have on average lower admin score). *
+  - *With such clusters it will be possible to identify some voting pattern. We can for example consistently supportive, consistently opposing or mixed behavior. Also communities could be detected if we notice group of users that vote mostly in the same way. Additionally, we could detect if there is some similarities between the users inside a specific cluster (e.g. consistently opposing have on average lower admin score).*
+
+![Uploading image.png…]()
+
 ### Temporal Analysis
 
 - **Time Series Analysis**:
