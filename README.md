@@ -30,9 +30,9 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *We take the 40 categories from the main topic classification on wikipedia that is in particular used to organise how to display the articles linked to in their various referencing systems in the website. These categories include for example culture, health, history or languages and can be found here: https://en.wikipedia.org/wiki/Category:Main_topic_classifications*
   - *Then the model Llama3.1 (8b) has been used locally in order to assign categories.*
 
--**Comments which supports the vote**
-  -*We will process the comments that support each vote using sentiment analyser from NLTK module. This will attribute a value between -1 (negative comment) to 1 (positive comment).*
-  -*This will allow us to compare this grade to the user and the outcome of the voting process.*
+- **Comments which supports the vote**
+  - *We will process the comments that support each vote using sentiment analyser from NLTK module. This will attribute a value between -1 (negative comment) to 1 (positive comment).*
+  - *This will allow us to compare this grade to the user and the outcome of the voting process.*
 
 ### Network Analysis
 
