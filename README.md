@@ -45,8 +45,8 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 ### Temporal Analysis
 
 - **Time Series Analysis**:
-  - *Tracking changes in key metrics (e.g., argument prevalence, voter influence) over time.*
-  - *Identifying periods of significant change in the RfA process.*
+  - *Tracking changes in key metrics like vote participation rate, tolerance rate over time.*
+  - *Identifying changes in behaviors over time.*
 
 - **Lifecycle Modeling**:
   - *Mapping candidate activities across timeframes surrounding RfA events.*
