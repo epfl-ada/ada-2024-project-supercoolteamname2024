@@ -33,10 +33,11 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 
 - **Voting Network Construction**:
   - *Constructing a graph with nodes representing users and edges indicating votes or interactions.*
-  - *Identifying “power voters” using centrality measures (e.g., PageRank, Betweenness).*
+  - *Identifying “power voters” using PageRank as influence measure.*
+    - *The PageRank algorithm allows us to evaluate influence according to every voter's incoming votes' quantity and quality, where the quality depends on the incoming voter's rank. This will be adapted to handle negative votes accordingly as well.*
 
 - **Community Detection**:
-  - *We apply clustering algorithms to detect patterns in the voting network, exploring two distinct approaches: the Louvain community detection algorithm and K-means clustering. The Louvain method focuses on the graph structure, identifying natural communities based on network connections. In contrast, K-means clusters users based on their voting behavior features. Comparing the results of both methods will help validate our findings, providing additional robustness if similar voting patterns are observed across both approaches.*
+  - *We apply clustering algorithms to detect patterns in the voting network, exploring two distinct approaches: the Louvain community detection algorithm and K-means clustering. The Louvain method focuses on the graph structure, identifying natural communities based on network connections and density. In contrast, K-means clusters users based on their voting behavior features. Comparing the results of both methods will help validate our findings, providing additional robustness if similar voting patterns are observed across both approaches.*
   - *With such clusters it will be possible to identify some voting pattern. We can for example consistently supportive, consistently opposing or mixed behavior. Also communities could be detected if we notice group of users that vote mostly in the same way. Additionally, we could detect if there is some similarities between the users inside a specific cluster (e.g. consistently opposing have on average lower admin score).*
 
 
