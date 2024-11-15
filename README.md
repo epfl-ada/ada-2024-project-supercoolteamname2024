@@ -53,52 +53,46 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *Identifying changes in votant's behavior over time, we will use classical Time Series theory tools in order to distinguish/discover trends*
   - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? does the areas of interest matter?.*
 
-## Proposed Timeline
+a
+## Milestone Program and Team Organization
 
-### Week 10: Final Data Refinement and Initial In-Depth Analysis
-- **Data Validation and Refinement**:
-  - Validate the user classification results, admin scores, and extracted statistics for accuracy.
-  - Find a way to quantify reputation/influence within a network with the data we have
+### Week 10: Initial Validation and Refinement
+- **Tasks**:
+  - Validate classification results and admin scores.
+  - Define metrics for reputation and influence.
+- **Team**:
+  - Tallula: Validate admin scores and user classifications.
+  - Benoît: Define reputation metrics and ensure data consistency.
 
 ### Week 11: Advanced Network Analysis
-- **Network Graph Enhancement**:
-  - Refine the voting network graph with recent classifications and scores.
-  - Apply centrality measures (e.g., PageRank, Betweenness) to clearly identify influential “power voters.”
-- **Community Detection**:
-  - Conduct detailed clustering within the network using K-mean or Louvain algorithms.
-  - Analyze interaction patterns within and between identified communities to uncover voting trends.
+- **Tasks**:
+  - Refine the voting network graph and identify “power voters.”
+  - Apply Louvain and K-means clustering to detect voting patterns.
+- **Team**:
+  - Édouard: Refine the network graph and calculate centrality measures.
+  - Gal: Assist with cluster analysis and compare clustering methods.
 
-### Week 12: Temporal and Lifecycle Analysis
-- **Temporal Analysis**:
-  - Begin in-depth time series analysis to identify shifts in argument trends, voting influence, and community standards.
-  - Track the evolution of key topics and voting styles over time, with attention to the influence of ideological trends.
-- **Lifecycle Modeling**:
-  - Map candidate activities over time, analyzing the impact of prior contributions on RfA success.
+### Week 12: Temporal Analysis
+- **Tasks**:
+  - Analyze time series trends in voting behavior and tolerance levels.
+  - Study the evolution of community standards and their impact on outcomes.
+- **Team**:
+  - Gal: Lead time series analysis and identify key temporal trends.
+  - Malen: Analyze how temporal trends align with thematic voting patterns.
 
-### Week 13: Cross-Validation and Interpretation of Findings
-- **Cross-Validation**:
-  - Use multiple analysis methods to cross-validate results from network, temporal, and topic analyses, ensuring consistency.
-- **Interpretation of Results**:
-  - Synthesize findings to identify key insights into factors affecting adminship success, including the influence of “power voters” and ideological trends.
-  - Develop insights into community governance, including evolving standards and the role of reputational factors.
+### Week 13: Cross-Validation and Synthesis
+- **Tasks**:
+  - Cross-validate findings across network, textual, and temporal analyses.
+  - Synthesize insights on adminship success factors.
+- **Team**:
+  - Benoît: Lead cross-validation and synthesize results.
+  - All team members: Review and refine findings collaboratively.
 
-### Week 14: Finalization and Reporting
-- **Visualization and Reporting**:
-  - Create final visualizations and figures.
-  - Complete the project report, analyses, and conclusions.
-- **Code and Documentation**:
-  - Prepare the setup to submit the final git.
-
-## Organisation milestones
-
-- **Preprocessing**:
-  - Obtain unique usernames
-  - Update usernames for people who changed them
-- **Augmentation**:
-  - Obtain admin scores for users that have one
-  - Obtain top articles of users
-  - Use top articles of users to classify their top categories of interest using LLM
-- **Cleanup**:
-  - Remove users with unsufficient data
-  - Remove users without admin score
-- **EDA**:
+### Week 14: Finalization and Submission
+- **Tasks**:
+  - Finalize visualizations, report, and code documentation.
+  - Submit the completed project.
+- **Team**:
+  - Benoît: Coordinate final report and submission.
+  - Tallula: Prepare final visualizations.
+  - All team members: Contribute to final review and polishing.
