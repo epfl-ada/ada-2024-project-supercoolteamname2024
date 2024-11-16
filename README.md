@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Our project investigates Wikipedia's Requests for Adminship (RfA) to understand the evolving dynamics of community governance and standards. By using textual analysis (NLP), network analysis, and temporal analysis, we aim to identify how key voters, argument trends, and candidate reputations have influenced RfA outcomes over time. We explore the evolution of influential "power voters," argument patterns, and candidate profiles to reveal insights into the mechanisms of online community decision-making and factors contributing to successful adminship. This study aims to offer a deep dive into the dynamics of influence, persuasion, and governance within Wikipedia’s ecosystem.
+Our project investigates Wikipedia's Requests for Adminship (RfA) to understand the evolving dynamics of community governance and standards. By using textual analysis (NLP), network analysis, and temporal analysis, we aim to identify how key voters, cluster appartenance, and candidate reputations have influenced RfA outcomes over time. We explore the evolution of influential "power voters," argument patterns, and candidate profiles to reveal insights into the mechanisms of online community decision-making and factors contributing to successful adminship. This study aims to offer a deep dive into the dynamics of influence, persuasion, and governance within Wikipedia’s ecosystem.
 
 ## Research Questions
 
@@ -29,17 +29,22 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *We use LLMs to classify/label voters into different topics/subject/areas of interest to avoid doing LDA. For this purpose we take the top 10 modified articles per user in order to assign at most 4 categories per user. Using LLM will allow to capture complex semantic relationships between words and phrases that traditional LDA might miss, leading to more accurate topic classification.*
   - *We take the 40 categories from the main topic classification on wikipedia that is in particular used to organise how to display the articles linked to in their various referencing systems in the website. These categories include for example culture, health, history or languages and can be found here: https://en.wikipedia.org/wiki/Category:Main_topic_classifications*
   - *Then the model Llama3.1 (8b) has been used locally in order to assign categories.*
+
+- **Comments which supports the vote**
+  - *We will process the comments that support each vote using sentiment analyser from NLTK module. This will attribute a value between -1 (negative comment) to 1 (positive comment).*
+  - *This will allow us to compare this grade to the user and the outcome of the voting process.*
+
 ### Network Analysis
 
 - **Voting Network Construction**:
   - *Constructing a graph with nodes representing users and edges indicating votes or interactions.*
-  - *Identifying “power voters” using centrality measures (e.g., PageRank, Betweenness).*
+  - *Identifying “power voters” using PageRank as influence measure.*
+    - *The PageRank algorithm allows us to evaluate influence according to every voter's incoming votes' quantity and quality, where the quality depends on the incoming voter's rank. This will be adapted to handle negative votes accordingly as well.*
 
 - **Community Detection**:
-  - *We apply clustering algorithms to detect patterns in the voting network, exploring two distinct approaches: the Louvain community detection algorithm and K-means clustering. The Louvain method focuses on the graph structure, identifying natural communities based on network connections. In contrast, K-means clusters users based on their voting behavior features. Comparing the results of both methods will help validate our findings, providing additional robustness if similar voting patterns are observed across both approaches.*
+  - *We apply clustering algorithms to detect patterns in the voting network, exploring two distinct approaches: the Louvain community detection algorithm and K-means clustering. The Louvain method focuses on the graph structure, identifying natural communities based on network connections and density. In contrast, K-means clusters users based on their voting behavior features. Comparing the results of both methods will help validate our findings, providing additional robustness if similar voting patterns are observed across both approaches.*
   - *With such clusters it will be possible to identify some voting pattern. We can for example consistently supportive, consistently opposing or mixed behavior. Also communities could be detected if we notice group of users that vote mostly in the same way. Additionally, we could detect if there is some similarities between the users inside a specific cluster (e.g. consistently opposing have on average lower admin score).*
 
-![Uploading image.png…]()
 
 ### Temporal Analysis
 
@@ -48,52 +53,34 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *Identifying changes in votant's behavior over time, we will use classical Time Series theory tools in order to distinguish/discover trends*
   - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? does the areas of interest matter?.*
 
-## Proposed Timeline
 
-### Week 10: Final Data Refinement and Initial In-Depth Analysis
-- **Data Validation and Refinement**:
-  - Validate the user classification results, admin scores, and extracted statistics for accuracy.
-  - Find a way to quantify reputation/influence within a network with the data we have
+## Milestone Program and Team Organization
+
+### Week 10: Initial Validation and Refinement
+- **Tasks**:
+  - Validate classification results and admin scores.
+  - Define metrics for reputation and influence.
+
 
 ### Week 11: Advanced Network Analysis
-- **Network Graph Enhancement**:
-  - Refine the voting network graph with recent classifications and scores.
-  - Apply centrality measures (e.g., PageRank, Betweenness) to clearly identify influential “power voters.”
-- **Community Detection**:
-  - Conduct detailed clustering within the network using K-mean or Louvain algorithms.
-  - Analyze interaction patterns within and between identified communities to uncover voting trends.
+- **Tasks**:
+  - Refine the voting network graph and identify “power voters.”
+  - Apply Louvain and K-means clustering to detect voting patterns.
 
-### Week 12: Temporal and Lifecycle Analysis
-- **Temporal Analysis**:
-  - Begin in-depth time series analysis to identify shifts in argument trends, voting influence, and community standards.
-  - Track the evolution of key topics and voting styles over time, with attention to the influence of ideological trends.
-- **Lifecycle Modeling**:
-  - Map candidate activities over time, analyzing the impact of prior contributions on RfA success.
 
-### Week 13: Cross-Validation and Interpretation of Findings
-- **Cross-Validation**:
-  - Use multiple analysis methods to cross-validate results from network, temporal, and topic analyses, ensuring consistency.
-- **Interpretation of Results**:
-  - Synthesize findings to identify key insights into factors affecting adminship success, including the influence of “power voters” and ideological trends.
-  - Develop insights into community governance, including evolving standards and the role of reputational factors.
+### Week 12: Temporal Analysis
+- **Tasks**:
+  - Analyze time series trends in voting behavior and tolerance levels.
+  - Study the evolution of community standards and their impact on outcomes.
 
-### Week 14: Finalization and Reporting
-- **Visualization and Reporting**:
-  - Create final visualizations and figures.
-  - Complete the project report, analyses, and conclusions.
-- **Code and Documentation**:
-  - Prepare the setup to submit the final git.
 
-## Organisation milestones
+### Week 13: Cross-Validation and Synthesis
+- **Tasks**:
+  - Cross-validate findings across network, textual, and temporal analyses.
+  - Synthesize insights on adminship success factors.
 
-- **Preprocessing**:
-  - Obtain unique usernames
-  - Update usernames for people who changed them
-- **Augmentation**:
-  - Obtain admin scores for users that have one
-  - Obtain top articles of users
-  - Use top articles of users to classify their top categories of interest using LLM
-- **Cleanup**:
-  - Remove users with unsufficient data
-  - Remove users without admin score
-- **EDA**:
+
+### Week 14: Finalization and Submission
+- **Tasks**:
+  - Finalize visualizations, report, and code documentation.
+  - Submit the completed project.
