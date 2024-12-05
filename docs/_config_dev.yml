@@ -1,0 +1,7 @@
+# Local environment overrides
+
+# In local development, no baseurl is needed
+baseurl: ""
+
+# Local URL
+url: "http://localhost:4000"

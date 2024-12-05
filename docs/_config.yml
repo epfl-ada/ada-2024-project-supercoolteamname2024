@@ -1,8 +1,8 @@
 # Site Settings
 title: "ADA Project"
 description: "Wikipedia RFA analysis"
-baseurl: "/ada-2024-project-supercoolteamname2024" # Base URL (e.g., /blog), leave blank for root
-url: "https://epfl-ada.github.io" # Replace with your site's URL
+baseurl: "/ada-2024-project-supercoolteamname2024" # Base URL for GitHub Pages
+url: "https://epfl-ada.github.io" # URL of your GitHub Pages site
 
 # Build settings
 markdown: kramdown
