@@ -1,0 +1,26 @@
+# Site Settings
+title: "ADA Project"
+description: "Wikipedia RFA analysis"
+baseurl: "" # Base URL (e.g., /blog), leave blank for root
+url: "http://yourdomain.com" # Replace with your site's URL
+
+# Build settings
+markdown: kramdown
+permalink: pretty # Pretty URLs like /about/ instead of /about.html
+theme: jekyll-theme-cayman
+
+# Exclude files or directories from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle
+  - vendor/cache
+  - vendor/gems
+  - vendor/ruby
+
+# Include additional files in the build
+include: []
+
+# Plugins (empty by default)
+plugins: []
