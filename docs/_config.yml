@@ -1,8 +1,8 @@
 # Site Settings
 title: "ADA Project"
 description: "Wikipedia RFA analysis"
-baseurl: "" # Base URL (e.g., /blog), leave blank for root
-url: "http://yourdomain.com" # Replace with your site's URL
+baseurl: "/ada-2024-project-supercoolteamname2024" # Base URL (e.g., /blog), leave blank for root
+url: "https://epfl-ada.github.io" # Replace with your site's URL
 
 # Build settings
 markdown: kramdown
