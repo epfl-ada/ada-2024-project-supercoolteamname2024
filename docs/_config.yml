@@ -1,13 +1,12 @@
 # Site Settings
-title: "ADA Project"
-description: "Wikipedia RFA analysis"
+description: "ADA 2024 Project"
 baseurl: "/ada-2024-project-supercoolteamname2024" # Base URL for GitHub Pages
 url: "https://epfl-ada.github.io" # URL of your GitHub Pages site
 
 # Build settings
 markdown: kramdown
 permalink: pretty # Pretty URLs like /about/ instead of /about.html
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
 
 # Exclude files or directories from build
 exclude:
