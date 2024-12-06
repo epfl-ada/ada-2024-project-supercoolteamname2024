@@ -1,84 +1,40 @@
 ---
 layout: default
-title: "Requests for Adminship on Wikipedia"
+title: "Admin, Baby, One More Time!"
 ---
+
 
 # Requests for Adminship on Wikipedia
 
-Wikipedia’s **Request for Adminship (RfA)** process is a formal procedure that allows contributors to nominate themselves or others for administrative privileges on the platform. Becoming an administrator (or "admin") grants access to critical tools for maintaining the quality and integrity of Wikipedia. However, this privilege comes with significant responsibilities and requires a rigorous vetting process.
+The **Request for Adminship (RfA)** process is a pivotal aspect of Wikipedia's community-driven governance. It is the procedure through which contributors nominate themselves or others to gain administrative privileges, granting access to critical tools for maintaining the quality and integrity of Wikipedia. However, the decision to grant adminship is not taken lightly and relies on a rigorous vetting process.
 
 ---
 
-## What Is an Admin?
+## Project Overview: Analyzing RfA Votes
 
-Admins on Wikipedia are trusted volunteers who have additional technical capabilities to manage and protect the platform. Their roles include:
-- Deleting or restoring pages.
-- Protecting or unprotecting articles.
-- Blocking or unblocking users.
-- Managing user permissions.
+Our project explores the dynamics of the RfA process through a comprehensive analysis of voting patterns and outcomes. Using a dataset containing all votes cast between 2003 (when the RfA process was adopted) and May 2013, we aim to uncover insights into the social and structural aspects of Wikipedia's governance.
 
-These privileges enable admins to enforce Wikipedia’s guidelines and handle disputes, ensuring the site remains a neutral and reliable source of information.
+### The Dataset
 
----
+The dataset, meticulously crawled and parsed, includes:
 
-## How Does the RfA Process Work?
-
-The RfA process follows these key steps:
-
-1. **Nomination**:
-   - A user nominates themselves or is nominated by another contributor.
-   - A statement outlining their qualifications, experience, and motivation is provided.
-
-2. **Community Discussion**:
-   - Other users participate by asking questions, voicing support, or opposing the nomination.
-   - Discussions focus on the nominee’s behavior, experience, and contributions.
-
-3. **Decision**:
-   - Wikipedia bureaucrats review the feedback and determine whether consensus exists to grant adminship.
+- **198,275 total votes** cast across 189,004 unique voter-votee pairs.
+- **11,381 users** involved in the process as voters or candidates.
+- Multiple RfA attempts by some candidates, allowing us to analyze repeated patterns of support or opposition.
 
 ---
 
-## Criteria for Becoming an Admin
+## How Are RfAs Decided?
 
-Candidates are evaluated based on:
+Although the RfA process allows any Wikipedia member to vote (support, oppose, or remain neutral), these votes are purely **consultative**. The final decision is made by Wikipedia's bureaucrats, a smaller group of highly trusted users. Bureaucrats evaluate the votes and comments to determine if there is a **community consensus**.
 
-1. **Experience**:
-   - A significant edit history, often with thousands of edits.
-   - Deep familiarity with Wikipedia policies and guidelines.
+Key considerations in their decision include:
+- The proportion of supporting versus opposing votes.
+- The reasons provided in comments for or against the candidate.
+- The nominee’s overall behavior and contributions to the platform.
 
-2. **Judgment**:
-   - Demonstrated ability to resolve conflicts diplomatically.
-   - Evidence of neutral and balanced decision-making.
+Even if a candidate receives a majority of support votes, their adminship can be denied if the bureaucrats believe the consensus is insufficient or if specific concerns are raised during the discussion.
 
-3. **Community Trust**:
-   - A positive reputation within the community.
-   - Minimal history of controversial or disruptive behavior.
+![RFA Outcomes](assets/images/plots/outcomes.png "RFA Outcomes")
 
----
-
-## Challenges in the RfA Process
-
-While the RfA process is essential to maintain Wikipedia’s quality, it is not without criticism:
-
-- **High Expectations**:
-  - The community often holds candidates to very high standards, making it challenging to pass.
-  
-- **Subjectivity**:
-  - Evaluations may be influenced by personal opinions, leading to inconsistent outcomes.
-  
-- **Accessibility**:
-  - The process can discourage newer contributors who might otherwise bring valuable perspectives.
-
----
-
-## Conclusion
-
-The RfA process exemplifies Wikipedia's commitment to transparency and community-driven governance. Although it can be demanding, it ensures that adminship is granted only to contributors who have earned the trust of the community.
-
-For more information, visit the [Wikipedia RfA page](https://en.wikipedia.org/wiki/Wikipedia:Requests_for_adminship).
-
----
-
-### Notes:
-- This page is a summary of Wikipedia’s Requests for Adminship process.
-- Contributions and suggestions for improvement are always welcome.
+The plot above shows the number of times an RfA (Request for Adminship) was either successful (positive) or unsuccessful (negative) as a function of the approval rate. While most RfAs with an approval rate above 80% are accepted, there is a noticeable overlap between the two distributions. This highlights that voting is never the decisive factor; the final decision relies heavily on the bureaucrats’ evaluation of the consensus and context.
