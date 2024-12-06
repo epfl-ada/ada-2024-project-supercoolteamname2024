@@ -70,3 +70,52 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* Conteneur principal de la bannière */
+.banner-header {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.image-container {
+  position: relative; /* Nécessaire pour positionner la signature */
+  display: inline-block;
+  width: 100%; /* L'image et les textes occupent toute la largeur */
+}
+
+.image-container img {
+  width: 100%; /* L'image occupe toute la largeur */
+  height: auto; /* Conserve le ratio d'aspect */
+  display: block; /* Évite les marges indésirables */
+}
+
+.banner-content {
+  position: absolute; /* Superpose le texte sur l'image */
+  top: 0%; /* Ajustez la position en fonction de l'image */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+}
+
+.banner-content h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.banner-content p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* Signature */
+.signature {
+  position: absolute; /* Place la signature par rapport à .image-container */
+  bottom: 10px; /* Place la signature à 10px du bas de l'image */
+  left: 50%; /* Centre horizontalement */
+  transform: translateX(-50%);
+  font-size: 0.9em;
+  font-style: italic;
+  color: white; /* Texte visible sur l'image */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Lisibilité améliorée */
+}

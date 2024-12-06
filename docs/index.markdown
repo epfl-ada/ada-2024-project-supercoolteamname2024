@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Admin Me, Baby, One More Time!"
+title: "Admin, Baby, One More Time!"
 ---
 
 
@@ -22,8 +22,6 @@ The dataset, meticulously crawled and parsed, includes:
 - **11,381 users** involved in the process as voters or candidates.
 - Multiple RfA attempts by some candidates, allowing us to analyze repeated patterns of support or opposition.
 
-This dataset serves as the foundation for our analysis, providing a unique window into the factors influencing adminship decisions on one of the world’s largest collaborative platforms.
-
 ---
 
 ## How Are RfAs Decided?
@@ -37,5 +35,6 @@ Key considerations in their decision include:
 
 Even if a candidate receives a majority of support votes, their adminship can be denied if the bureaucrats believe the consensus is insufficient or if specific concerns are raised during the discussion.
 
----
+![RFA Outcomes](assets/images/plots/outcomes.png "RFA Outcomes")
 
+The plot above shows the number of times an RfA (Request for Adminship) was either successful (positive) or unsuccessful (negative) as a function of the approval rate. While most RfAs with an approval rate above 80% are accepted, there is a noticeable overlap between the two distributions. This highlights that voting is never the decisive factor; the final decision relies heavily on the bureaucrats’ evaluation of the consensus and context.
