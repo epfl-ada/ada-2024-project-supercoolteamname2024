@@ -38,3 +38,9 @@ Even if a candidate receives a majority of support votes, their adminship can be
 ![RFA Outcomes](assets/images/plots/outcomes.png "RFA Outcomes")
 
 The plot above shows the number of times an RfA (Request for Adminship) was either successful (positive) or unsuccessful (negative) as a function of the approval rate. While most RfAs with an approval rate above 80% are accepted, there is a noticeable overlap between the two distributions. This highlights that voting is never the decisive factor; the final decision relies heavily on the bureaucrats’ evaluation of the consensus and context.
+
+## How Did Success Rate Evolve with Time?
+
+We can observe that initially, most RfAs were accepted, but the success rate has declined steadily year after year.
+
+![Success Rates Over Time](assets/images/plots/success_rates.png "Success Rates Over Time")
