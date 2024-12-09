@@ -51,6 +51,11 @@ We can observe that initially, most RfAs were accepted, but the success rate has
 
 {% include plots/success_rates.html %}
 
+Are some People changing their tolerance level regarding the positiv/negativ vote ratio? Some of them may become stricter or leaner?
+
+{% include plots/trends.html %}
+
+
 ---
 
 # Are some voters more influential ?
@@ -69,3 +74,12 @@ Below is the distribution of Admin Scores across users:
 ---
 
 # Are users categorizable ?  
+
+Ask LLM to categorize into different themes
+
+
+{% include plots/categories.html %}
+
+
+{% include plots/success_rates_by_category.html %}
+
