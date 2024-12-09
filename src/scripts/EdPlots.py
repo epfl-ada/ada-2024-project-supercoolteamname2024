@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
 from collections import Counter
 import re
 import os
@@ -53,7 +55,6 @@ categories = [
 
 
 # Display the updated DataFrame
-display(df.head())
 for col in df.columns[1:]:  # Exclude the first column (username)
     df[col] = df[col].apply(lambda x: x if x in categories else np.nan)
     
@@ -67,7 +68,7 @@ for _, row in df.iterrows():
   
 def plot_top_categories(df, valid_categories, top_n=15):
     """
-    Analyze and plot the top categories by user count from the given DataFrame.
+    Analyze and plot the top categories by user count from the given DataFrame using Plotly.
     
     Args:
         df (pd.DataFrame): Input DataFrame with category columns.
@@ -89,17 +90,15 @@ def plot_top_categories(df, valid_categories, top_n=15):
     topic_counts_df.columns = ['Topic', 'Count']
     topic_counts_df = topic_counts_df[topic_counts_df['Topic'].isin(valid_categories)]  # Filter for valid categories
     
-    # Plotting the topics with their counts in the order provided
-    plt.figure(figsize=(12, 8))
-    plt.bar(topic_counts_df["Topic"], topic_counts_df["Count"], color="skyblue")
-    plt.xticks(rotation=90)  # Rotate x-axis labels for readability
-    plt.xlabel("Categories")
-    plt.ylabel("User Count")
-    plt.title("User Count by Category")
-    plt.tight_layout()  # Adjust layout to prevent label overlap
-    plt.show()
+    # Plotting the topics with their counts using Plotly
+    fig = px.bar(topic_counts_df, x="Topic", y="Count", title="User Count by Category", 
+                 labels={"Topic": "Categories", "Count": "User Count"})
+    fig.update_layout(xaxis_tickangle=45, xaxis_title="Categories", yaxis_title="User Count", 
+                      template="plotly_white")
+    fig.show()
     
     return top_categories
+
 
 top_15_categories = plot_top_categories(df, categories, top_n=15)
 
@@ -170,7 +169,7 @@ nans_per_column = df.isna().sum()
 
 def plot_participation_rates(df_vote, top_categories, title="Participation Rates by Category", top_n=15):
     """
-    Calculate and plot participation rates for the top categories.
+    Calculate and plot participation rates for the top categories using Plotly.
     
     Args:
         df_vote (pd.DataFrame): DataFrame containing votes with 'SRC', 'SRC_Category', and 'Category_Same' columns.
@@ -179,7 +178,7 @@ def plot_participation_rates(df_vote, top_categories, title="Participation Rates
         top_n (int): Number of top categories to include in the analysis.
     
     Returns:
-        None: Displays a bar chart for participation rates.
+        None: Displays an interactive bar chart for participation rates.
     """
     participation_data = []
     
@@ -202,45 +201,43 @@ def plot_participation_rates(df_vote, top_categories, title="Participation Rates
     # Convert to structured format for plotting
     categories, within_category_rates, outside_category_rates = zip(*participation_data)
 
-    # Plotting
-    x = np.arange(len(categories))  # the label locations
-    bar_width = 0.35
+    # Create the bar chart using Plotly
+    fig = go.Figure()
 
-    fig, ax = plt.subplots(figsize=(14, 8))
-    rects1 = ax.bar(x - bar_width / 2, within_category_rates, bar_width, label='Within Category', color='blue')
-    rects2 = ax.bar(x + bar_width / 2, outside_category_rates, bar_width, label='Outside Category', color='orange')
+    fig.add_trace(go.Bar(
+        x=categories, 
+        y=within_category_rates, 
+        name='Within Category',
+        text=[f'{rate:.2%}' for rate in within_category_rates],
+        textposition='auto',
+        marker_color='blue'
+    ))
 
-    # Add labels, title, and custom x-axis tick labels
-    ax.set_xlabel('Categories', fontsize=14)
-    ax.set_ylabel('Participation Rate', fontsize=14)
-    ax.set_title(title, fontsize=16)
-    ax.set_xticks(x)
-    ax.set_xticklabels(categories, rotation=45, ha='right', fontsize=12)
-    ax.legend()
+    fig.add_trace(go.Bar(
+        x=categories, 
+        y=outside_category_rates, 
+        name='Outside Category',
+        text=[f'{rate:.2%}' for rate in outside_category_rates],
+        textposition='auto',
+        marker_color='orange'
+    ))
 
-    # Annotate bars with values
-    for rect in rects1:
-        height = rect.get_height()
-        ax.annotate(f'{height:.2%}',  # Convert to percentage format
-                    xy=(rect.get_x() + rect.get_width() / 2, height),
-                    xytext=(0, 3),  # 3 points vertical offset
-                    textcoords="offset points",
-                    ha='center', va='bottom', fontsize=10)
+    # Update layout for the figure
+    fig.update_layout(
+        title=title,
+        xaxis_title="Categories",
+        yaxis_title="Participation Rate",
+        barmode='group',
+        template="plotly_white",
+        xaxis_tickangle=45
+    )
 
-    for rect in rects2:
-        height = rect.get_height()
-        ax.annotate(f'{height:.2%}',  # Convert to percentage format
-                    xy=(rect.get_x() + rect.get_width() / 2, height),
-                    xytext=(0, 3),  # 3 points vertical offset
-                    textcoords="offset points",
-                    ha='center', va='bottom', fontsize=10)
-
-    fig.tight_layout()
-    plt.show()
+    # Show the figure
+    fig.show()
 
 def plot_support_rates(df_vote, top_categories, title="Support Rates by Category", top_n=15):
     """
-    Calculate and plot support rates for the top categories.
+    Calculate and plot support rates for the top categories using Plotly.
     
     Args:
         df_vote (pd.DataFrame): DataFrame containing votes with 'SRC_Category', 'VOT' columns.
@@ -287,25 +284,42 @@ def plot_support_rates(df_vote, top_categories, title="Support Rates by Category
     # Convert to DataFrame for display
     support_rates_df = pd.DataFrame(support_data)
 
-    # Plot the support rates
-    ax = support_rates_df.plot(
-        x="Category",
-        y=["Support Rate Within Same (%)", "Support Rate Within Different (%)"],
-        kind="bar",
-        figsize=(12, 8),
-        stacked=False,
+    # Create the bar chart using Plotly
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x=support_rates_df["Category"],
+        y=support_rates_df["Support Rate Within Same (%)"],
+        name="Support Rate Within Same (%)",
+        text=support_rates_df["Support Rate Within Same (%)"].apply(lambda x: f"{x:.2f}%"),
+        textposition='auto',
+        marker_color='orange'
+    ))
+
+    fig.add_trace(go.Bar(
+        x=support_rates_df["Category"],
+        y=support_rates_df["Support Rate Within Different (%)"],
+        name="Support Rate Within Different (%)",
+        text=support_rates_df["Support Rate Within Different (%)"].apply(lambda x: f"{x:.2f}%"),
+        textposition='auto',
+        marker_color='blue'
+    ))
+
+    # Update layout for the figure
+    fig.update_layout(
         title=title,
-        ylabel="Support Rate (%)",
-        color=["orange", "blue"]
+        xaxis_title="Category",
+        yaxis_title="Support Rate (%)",
+        barmode='group',
+        template="plotly_white",
+        xaxis_tickangle=45
     )
-    plt.xticks(rotation=45, ha="right", fontsize=12)
-    plt.xlabel("Category", fontsize=14)
-    plt.ylabel("Support Rate (%)", fontsize=14)
-    plt.legend(["Within Same Category", "Within Different Category"], loc="upper right", fontsize=12)
-    plt.tight_layout()
-    plt.show()
+
+    # Show the figure
+    fig.show()
     
     return support_rates_df
+
 
 
 def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_column='SRC'):
