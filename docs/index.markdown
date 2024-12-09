@@ -71,6 +71,8 @@ Below is the distribution of Admin Scores across users:
 - This peak highlights the limitation of the score in distinguishing between inactive users with old accounts and active contributors.
 - Beyond this peak, the distribution reflects a more meaningful differentiation among active and engaged users.
 
+{% include plots/Distribution_Admin_Scores.html %}
+
 ---
 
 # Are users categorizable ?  
@@ -82,4 +84,8 @@ Ask LLM to categorize into different themes
 
 
 {% include plots/success_rates_by_category.html %}
+
+{% include plots/Distribution_Admin_Score_Category.html %}
+
+{% include plots/Comparison_Vote_Category.html %}
 
