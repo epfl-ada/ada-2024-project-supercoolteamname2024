@@ -40,77 +40,95 @@ def plot_outcomes_approbation_rates(filepath):
 ##############################
 ## Plot success rates over time
 ###############################
+import pandas as pd
+import plotly.graph_objects as go
+
 def plot_success_rates(file_path):
-    outcomes = pd.DataFrame(columns=["Positive", "Negative"]).astype(int)
-    # Lire toutes les lignes du fichier
+    # Chargement et traitement des données
+    outcomes = pd.DataFrame(columns=["Positive", "Negative"], dtype=int)
+    
     with open(file_path, "r", encoding="utf-8") as file:
-        lines = file.readlines()  # Charger les lignes dans une liste
+        lines = file.readlines()
+        
     tgt = None
-    # Parcourir les lignes avec leur index
     for index, line in enumerate(lines):
         line = line.strip()
         if line.startswith("TGT:"):
-            current_tgt = line.split(":")[1]
+            current_tgt = line.split(":", 1)[1].strip()
             if tgt != current_tgt:
                 tgt = current_tgt
-                # Accéder aux lignes suivantes
-                res = lines[index + 2].strip().split(":")[1]
-                year = lines[index + 3].strip().split(":")[1]
-                if year not in outcomes.index:
-                    outcomes.loc[year] = {"Positive": 0, "Negative": 0}
-                # Incrémenter les comptes en fonction du résultat
-                if res == "1":
-                    outcomes.at[year, "Positive"] += 1
-                elif res == "-1":
-                    outcomes.at[year, "Negative"] += 1
-                else:
-                    print(f"Unexpected result: {res}")
-    #now plot
+                try:
+                    res_line = lines[index + 2].strip()
+                    year_line = lines[index + 3].strip()
+                    
+                    res = res_line.split(":", 1)[1].strip()
+                    year = year_line.split(":", 1)[1].strip()
+                    
+                    if year not in outcomes.index:
+                        outcomes.loc[year] = {"Positive": 0, "Negative": 0}
+                    
+                    if res == "1":
+                        outcomes.at[year, "Positive"] += 1
+                    elif res == "-1":
+                        outcomes.at[year, "Negative"] += 1
+                except IndexError:
+                    pass
+
     outcomes.sort_index(inplace=True)
-    outcomes['Positive outcomes ratio'] = outcomes['Positive'] / (outcomes['Positive'] + outcomes['Negative'])
-    outcomes['RFAs'] = outcomes['Positive'] + outcomes['Negative']
-
-    # Créer la figure
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax2 = ax.twinx()
-
-    # Définir les couleurs des axes
-    color_ax = 'blue'  # Couleur de l'axe gauche
-    color_ax2 = 'green'  # Couleur de l'axe droit (par défaut)
-
-    # Tracer la courbe associée à l'axe gauche
-    ax.plot(
-        outcomes.index,
-        outcomes['Positive outcomes ratio'],
-        color=color_ax,  # Couleur de l'axe gauche
-        linewidth=2,
-        marker='o',
-        markersize=6
+    outcomes["Positive outcomes ratio"] = outcomes["Positive"] / (outcomes["Positive"] + outcomes["Negative"])
+    outcomes["RFAs"] = outcomes["Positive"] + outcomes["Negative"]
+    
+    # Plot avec Plotly
+    fig = go.Figure()
+    
+    # Courbe du taux de succès
+    fig.add_trace(
+        go.Scatter(
+            x=outcomes.index,
+            y=outcomes["Positive outcomes ratio"],
+            name="Success Rate",
+            mode="lines+markers",
+            marker=dict(size=8),
+            line=dict(width=2),
+            yaxis="y1",
+            hovertemplate="Year: %{x}<br>Success Rate: %{y:.2%}<extra></extra>"
+        )
     )
-
-    # Tracer la courbe associée à l'axe droit
-    ax2.plot(
-        outcomes.index,
-        outcomes['RFAs'],
-        color=color_ax2,  # Couleur de l'axe droit
-        linewidth=2,
-        marker='o',
-        markersize=6
+    
+    # Courbe du nombre de RFAs
+    fig.add_trace(
+        go.Scatter(
+            x=outcomes.index,
+            y=outcomes["RFAs"],
+            name="Number of RFAs",
+            mode="lines+markers",
+            marker=dict(size=8),
+            line=dict(width=2),
+            yaxis="y2",
+            hovertemplate="Year: %{x}<br>RFAs: %{y}<extra></extra>"
+        )
     )
+    
+    # Mise en page
+    fig.update_layout(
+        xaxis=dict(title="Year"),
+        yaxis=dict(title="Success Rate", range=[0,1]),
+        yaxis2=dict(title="Number of RFAs", overlaying="y", side="right"),
+        legend=dict(x=0.5, y=1.15, orientation="h", xanchor="center"),
+        template="plotly_white",
+        width=1000,
+        height=600,
+        margin=dict(l=50, r=50, t=80, b=50)
+    )
+    
+    fig.show()
+    # Exporter le graphique en HTML div
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-    # Ajouter des labels aux axes
-    ax.set_xlabel('Year', fontsize=14, fontweight='bold')
-    ax.set_ylabel('Success Rate', fontsize=14, fontweight='bold', color=color_ax)
-    ax2.set_ylabel('Number of RFAs', fontsize=14, fontweight='bold', color=color_ax2)
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/success_rates.html", "w") as f:
+        f.write(graph_html)
 
-    # Ajuster les couleurs des ticks pour correspondre aux axes
-    ax.tick_params(axis='y', labelcolor=color_ax)
-    ax2.tick_params(axis='y', labelcolor=color_ax2)
-    ax.tick_params(axis='x', labelsize=12)
-
-    # Afficher le graphique
-    plt.tight_layout()
-    plt.show()
 
 ###########################  "data/scores.csv"
 ## Plot admin scores histogram
