@@ -26,8 +26,6 @@ The dataset, meticulously crawled and parsed, includes:
 To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise.
 
 
----
-
 ## How Are RfAs Decided?
 
 Although the RfA process allows any Wikipedia member to vote (support, oppose, or remain neutral), these votes are purely **consultative**. The final decision is made by Wikipedia's bureaucrats, a smaller group of highly trusted users. Bureaucrats evaluate the votes and comments to determine if there is a **community consensus**.
@@ -60,9 +58,14 @@ We can observe that initially, most RfAs were accepted, but the success rate has
 ## Understanding the Admin Score
 
 The **Admin Score** is a tool designed to provide a quick overview of how "admin-worthy" a user is on Wikipedia. It evaluates various factors of user activity, each weighted by specific multipliers. Key factors include account age, edit count, participation in key activities like AFDs (Articles for Deletion) and AIV (Administrator Intervention Against Vandalism), and the use of edit summaries. Each factor is capped at 100, and the total possible Admin Score is **1200**. This score gives a simplified but insightful view of a user's contributions and reliability as a potential administrator.
-Each factor is capped at 100, with a total possible score of 1200.
-Below is plotted the admin score distribution:
+
+Below is the distribution of Admin Scores across users:
 ![Admin score distribution](assets/images/plots/admin_score_distr.png "Admin score distribution")
+
+- The **small peak around 100** is due to many accounts that have not made any edits on the English Wikipedia but have maxed out the **100-point cap** for the account age factor.
+- This peak highlights the limitation of the score in distinguishing between inactive users with old accounts and active contributors.
+- Beyond this peak, the distribution reflects a more meaningful differentiation among active and engaged users.
+
 ---
 
 # Are users categorizable ?  

@@ -54,33 +54,20 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? does the areas of interest matter?.*
 
 
-## Milestone Program and Team Organization
+## Team contribution
 
-### Week 10: Initial Validation and Refinement
-- **Tasks**:
-  - Validate classification results and admin scores.
-  - Define metrics for reputation and influence.
-
-
-### Week 11: Advanced Network Analysis
-- **Tasks**:
-  - Refine the voting network graph and identify “power voters.”
-  - Apply Louvain and K-means clustering to detect voting patterns.
-
-
-### Week 12: Temporal Analysis
-- **Tasks**:
-  - Analyze time series trends in voting behavior and tolerance levels.
-  - Study the evolution of community standards and their impact on outcomes.
-
-
-### Week 13: Cross-Validation and Synthesis
-- **Tasks**:
-  - Cross-validate findings across network, textual, and temporal analyses.
-  - Synthesize insights on adminship success factors.
-
-
-### Week 14: Finalization and Submission
-- **Tasks**:
-  - Finalize visualizations, report, and code documentation.
-  - Submit the completed project.
+- Gal:
+  - Jekyll website
+  - Story-telling
+  - Restore changed usernames
+- Malen:
+  - Graph network
+  - Power voters
+- Benoit:
+  - LLM
+  - Clustering
+- Edouard:
+  - Chicken Saté
+  - Stats
+- Tallula:
+  - ???
