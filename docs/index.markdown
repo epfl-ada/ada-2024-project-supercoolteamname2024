@@ -37,7 +37,7 @@ Bureaucrats base their decisions on:
 
 Even if a candidate receives a majority of support votes, their adminship can be denied if the bureaucrats believe the consensus is insufficient or if specific concerns are raised during the discussion.
 
-![RFA Outcomes](assets/images/plots/outcomes.png "RFA Outcomes")
+{% include plots/approb_rates.html %}
 
 The plot above shows the number of times an RfA (Request for Adminship) was either successful (positive) or unsuccessful (negative) as a function of the approval rate. While most RfAs with an approval rate above 80% are accepted, there is a noticeable overlap between the two distributions. This highlights that voting is never the decisive factor; the final decision relies heavily on the bureaucrats’ evaluation of the consensus and context.
 
