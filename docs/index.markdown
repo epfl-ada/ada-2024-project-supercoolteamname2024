@@ -60,7 +60,7 @@ We can observe that initially, most RfAs were accepted, but the success rate has
 The **Admin Score** is a tool designed to provide a quick overview of how "admin-worthy" a user is on Wikipedia. It evaluates various factors of user activity, each weighted by specific multipliers. Key factors include account age, edit count, participation in key activities like AFDs (Articles for Deletion) and AIV (Administrator Intervention Against Vandalism), and the use of edit summaries. Each factor is capped at 100, and the total possible Admin Score is **1200**. This score gives a simplified but insightful view of a user's contributions and reliability as a potential administrator.
 
 Below is the distribution of Admin Scores across users:
-![Admin score distribution](assets/images/plots/admin_score_distr.png "Admin score distribution")
+{% include plots/admin_score_histogram.html %}
 
 - The **small peak around 100** is due to many accounts that have not made any edits on the English Wikipedia but have maxed out the **100-point cap** for the account age factor.
 - This peak highlights the limitation of the score in distinguishing between inactive users with old accounts and active contributors.
@@ -69,5 +69,3 @@ Below is the distribution of Admin Scores across users:
 ---
 
 # Are users categorizable ?  
-
-tallula ca va ?
