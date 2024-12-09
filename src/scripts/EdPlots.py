@@ -527,12 +527,6 @@ def analyze_success_failure(df_vote, title="Success and Failure Analysis by Cate
 
 
 
-
-
-import pandas as pd
-import plotly.express as px
-from scipy.stats import chi2_contingency
-
 def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Category"):
     """
     Perform chi-square test and plot success rates by category using Plotly.
@@ -544,6 +538,9 @@ def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Cat
     Returns:
         None
     """
+    from scipy.stats import chi2_contingency
+    import plotly.express as px
+    
     # Perform a chi-square test for independence
     contingency_table = success_data[['Failures', 'Successes']].T
     chi2, p_value, _, _ = chi2_contingency(contingency_table)
@@ -558,12 +555,11 @@ def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Cat
     # Sort data by success rate
     success_data_sorted = success_data.sort_values(by='Success_Rate', ascending=False)
 
-    # Plot success rates using Plotly
+    # Plot success rates using Plotly (vertical bars)
     fig = px.bar(
         success_data_sorted,
-        x='Success_Rate',
-        y=success_data_sorted.index,
-        orientation='h',
+        x=success_data_sorted.index,
+        y='Success_Rate',
         title=title,
         text=success_data_sorted['Success_Rate'].apply(lambda x: f"{x:.2%}"),
         labels={'Success_Rate': 'Success Rate (%)', 'index': 'Category'},
@@ -573,9 +569,8 @@ def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Cat
     # Customize layout
     fig.update_traces(marker_color='skyblue', textposition='auto')
     fig.update_layout(
-        xaxis_title="Success Rate (%)",
-        yaxis_title="Category",
-        yaxis=dict(autorange="reversed")  # Reverse order for horizontal bar chart
+        xaxis_title="Category",
+        yaxis_title="Success Rate (%)"
     )
 
     # Save the plot as an HTML file
@@ -585,6 +580,7 @@ def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Cat
 
     # Show the figure
     fig.show()
+
 
 
 
