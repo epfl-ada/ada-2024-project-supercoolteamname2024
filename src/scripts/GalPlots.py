@@ -10,7 +10,7 @@ def plot_outcomes_approbation_rates(filepath):
     df = pd.DataFrame(columns=['Outcome',"Positive", "Negative"])
     current_tgt = None
     tgt_ix=0
-    with open(file_path, "r", encoding="utf-8") as file:
+    with open(filepath, "r", encoding="utf-8") as file:
         lines = file.readlines()  # Charger les lignes dans une liste
     for line in lines:
         line = line.strip()
