@@ -3,7 +3,6 @@ layout: default
 title: "Admin, Baby, One More Time!"
 ---
 
-
 # Requests for Adminship on Wikipedia
 
 The **Request for Adminship (RfA)** process is a pivotal aspect of Wikipedia's community-driven governance. It is the procedure through which contributors nominate themselves or others to gain administrative privileges, granting access to critical tools for maintaining the quality and integrity of Wikipedia. However, the decision to grant adminship is not taken lightly and relies on a rigorous vetting process.
@@ -22,13 +21,18 @@ The dataset, meticulously crawled and parsed, includes:
 - **11,381 users** involved in the process as voters or candidates.
 - Multiple RfA attempts by some candidates, allowing us to analyze repeated patterns of support or opposition.
 
+### Data Augmentation
+
+To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise.
+
+
 ---
 
 ## How Are RfAs Decided?
 
 Although the RfA process allows any Wikipedia member to vote (support, oppose, or remain neutral), these votes are purely **consultative**. The final decision is made by Wikipedia's bureaucrats, a smaller group of highly trusted users. Bureaucrats evaluate the votes and comments to determine if there is a **community consensus**.
 
-Key considerations in their decision include:
+Bureaucrats base their decisions on:
 - The proportion of supporting versus opposing votes.
 - The reasons provided in comments for or against the candidate.
 - The nominee’s overall behavior and contributions to the platform.
@@ -39,8 +43,28 @@ Even if a candidate receives a majority of support votes, their adminship can be
 
 The plot above shows the number of times an RfA (Request for Adminship) was either successful (positive) or unsuccessful (negative) as a function of the approval rate. While most RfAs with an approval rate above 80% are accepted, there is a noticeable overlap between the two distributions. This highlights that voting is never the decisive factor; the final decision relies heavily on the bureaucrats’ evaluation of the consensus and context.
 
+---
+
+# Expectation and Tolerance of Community Over Time
+
 ## How Did Success Rate Evolve with Time?
 
 We can observe that initially, most RfAs were accepted, but the success rate has declined steadily year after year.
 
 ![Success Rates Over Time](assets/images/plots/success_rates.png "Success Rates Over Time")
+
+---
+
+# Are some voters more influential ?
+
+## Understanding the Admin Score
+
+The **Admin Score** is a tool designed to provide a quick overview of how "admin-worthy" a user is on Wikipedia. It evaluates various factors of user activity, each weighted by specific multipliers. Key factors include account age, edit count, participation in key activities like AFDs (Articles for Deletion) and AIV (Administrator Intervention Against Vandalism), and the use of edit summaries. Each factor is capped at 100, and the total possible Admin Score is **1200**. This score gives a simplified but insightful view of a user's contributions and reliability as a potential administrator.
+Each factor is capped at 100, with a total possible score of 1200.
+Below is plotted the admin score distribution:
+![Admin score distribution](assets/images/plots/admin_score_distr.png "Admin score distribution")
+---
+
+# Are users categorizable ?  
+
+
