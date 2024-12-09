@@ -49,7 +49,7 @@ The plot above shows the number of times an RfA (Request for Adminship) was eith
 
 We can observe that initially, most RfAs were accepted, but the success rate has declined steadily year after year.
 
-![Success Rates Over Time](assets/images/plots/success_rates.png "Success Rates Over Time")
+{% include plots/success_rates.html %}
 
 ---
 
