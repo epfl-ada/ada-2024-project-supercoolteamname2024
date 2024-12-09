@@ -97,6 +97,13 @@ def plot_top_categories(df, valid_categories, top_n=15):
                       template="plotly_white")
     fig.show()
     
+    # Exporter le graphique en HTML div
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/categories.html", "w") as f:
+        f.write(graph_html)
+    
     return top_categories
 
 
@@ -234,6 +241,13 @@ def plot_participation_rates(df_vote, top_categories, title="Participation Rates
 
     # Show the figure
     fig.show()
+    
+    # Exporter le graphique en HTML div
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/participation_rates.html", "w") as f:
+        f.write(graph_html)
 
 def plot_support_rates(df_vote, top_categories, title="Support Rates by Category", top_n=15):
     """
@@ -317,14 +331,24 @@ def plot_support_rates(df_vote, top_categories, title="Support Rates by Category
 
     # Show the figure
     fig.show()
+    # Exporter le graphique en HTML div
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/support_rates.html", "w") as f:
+        f.write(graph_html)
     
     return support_rates_df
 
 
 
+import pandas as pd
+from scipy.stats import linregress
+import plotly.express as px
+
 def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_column='SRC'):
     """
-    Analyze voter trends over time using linear regression on positivity ratios.
+    Analyze voter trends over time using linear regression on positivity ratios and visualize using Plotly.
     
     Args:
         df_vote (pd.DataFrame): DataFrame containing voting data with date, voter ID, and vote columns.
@@ -372,22 +396,48 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
     print(f"Total voters analyzed for trends: {len(trends_df)}")
     print(trends_df['Trend'].value_counts())
 
-    # Plot the trends
-    trend_counts = trends_df['Trend'].value_counts()
-    trend_counts.plot(kind='bar', color=['green', 'red', 'gray'], figsize=(10, 6))
-    plt.title('Trend Analysis of Voter Positivity')
-    plt.xlabel('Trend')
-    plt.ylabel('Number of Voters')
-    plt.xticks(rotation=0)
-    plt.tight_layout()
-    plt.show()
+    # Plot the trends using Plotly
+    trend_counts = trends_df['Trend'].value_counts().reset_index()
+    trend_counts.columns = ['Trend', 'Count']
+
+    fig = px.bar(
+        trend_counts,
+        x='Trend',
+        y='Count',
+        color='Trend',
+        text='Count',
+        title='Trend Analysis of Voter Positivity',
+        labels={'Trend': 'Trend', 'Count': 'Number of Voters'},
+        template='plotly_white'
+    )
+
+    # Customize appearance
+    fig.update_traces(textposition='auto')
+    fig.update_layout(
+        xaxis_title="Trend",
+        yaxis_title="Number of Voters",
+        xaxis_tickangle=0
+    )
+
+    fig.show()
+    
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/trends.html", "w") as f:
+        f.write(graph_html)
 
     return trends_df
 
 
+
+import pandas as pd
+import plotly.graph_objects as go
+from scipy.stats import chi2_contingency
+
 def analyze_success_failure(df_vote, title="Success and Failure Analysis by Category"):
     """
-    Analyze and plot success and failure counts and rates by category.
+    Analyze and plot success and failure counts and rates by category using Plotly.
     
     Args:
         df_vote (pd.DataFrame): DataFrame containing votes with 'SRC_Category' and 'VOT' columns.
@@ -409,7 +459,6 @@ def analyze_success_failure(df_vote, title="Success and Failure Analysis by Cate
     success_data['Total'] = success_data['Failures'] + success_data['Successes']
     success_data['Success_Rate'] = success_data['Successes'] / success_data['Total']
 
-
     # Perform a chi-square test for independence
     contingency_table = success_data[['Failures', 'Successes']].T
     chi2, p_value, _, _ = chi2_contingency(contingency_table)
@@ -419,39 +468,74 @@ def analyze_success_failure(df_vote, title="Success and Failure Analysis by Cate
     print(f"P-Value: {p_value}")
 
     # Plot 1: Stacked bar chart for successes and failures
-    fig1, ax1 = plt.subplots(figsize=(14, 8))
-    success_data[['Failures', 'Successes']].plot(
-        kind='bar',
-        stacked=True,
-        ax=ax1,
-        color=['red', 'green'],
-        alpha=0.7,
-        label=['Failures', 'Successes']
+    fig1 = go.Figure()
+
+    fig1.add_trace(go.Bar(
+        name='Failures',
+        x=success_data.index,
+        y=success_data['Failures'],
+        marker_color='red'
+    ))
+
+    fig1.add_trace(go.Bar(
+        name='Successes',
+        x=success_data.index,
+        y=success_data['Successes'],
+        marker_color='green'
+    ))
+
+    fig1.update_layout(
+        barmode='stack',
+        title=f'{title} - Counts',
+        xaxis_title='Category',
+        yaxis_title='Counts',
+        template='plotly_white',
+        xaxis_tickangle=45
     )
-    ax1.set_title(f'{title} - Counts', fontsize=16)
-    ax1.set_xlabel('Category', fontsize=14)
-    ax1.set_ylabel('Counts', fontsize=14)
-    ax1.tick_params(axis='x', rotation=45)
-    ax1.legend(loc='upper left', fontsize=12)
-    plt.tight_layout()
-    plt.show()
 
-    # Plot 2: Histogram for success rates
-    fig2, ax2 = plt.subplots(figsize=(14, 8))
-    ax2.bar(success_data.index, success_data['Success_Rate'] * 100, color='blue', alpha=0.7)
-    ax2.set_title(f'{title} - Success Rates', fontsize=16)
-    ax2.set_xlabel('Category', fontsize=14)
-    ax2.set_ylabel('Success Rate (%)', fontsize=14)
-    ax2.tick_params(axis='x', rotation=45)
-    plt.tight_layout()
-    plt.show()
+    # Save Plot 1 as HTML
+    graph_html1 = fig1.to_html(full_html=False, include_plotlyjs='cdn')
+    with open("docs/_includes/plots/success_failure_counts.html", "w") as f:
+        f.write(graph_html1)
 
+    # Plot 2: Bar chart for success rates
+    fig2 = go.Figure()
+
+    fig2.add_trace(go.Bar(
+        x=success_data.index,
+        y=success_data['Success_Rate'] * 100,
+        text=success_data['Success_Rate'].apply(lambda x: f"{x:.2%}"),
+        textposition='auto',
+        marker_color='blue'
+    ))
+
+    fig2.update_layout(
+        title=f'{title} - Success Rates',
+        xaxis_title='Category',
+        yaxis_title='Success Rate (%)',
+        template='plotly_white',
+        xaxis_tickangle=45
+    )
+
+    # Save Plot 2 as HTML
+    graph_html2 = fig2.to_html(full_html=False, include_plotlyjs='cdn')
+    with open("docs/_includes/plots/success_rates.html", "w") as f:
+        f.write(graph_html2)
+
+    # Return processed data for further analysis
     return success_data
 
 
+
+
+
+import pandas as pd
+import plotly.express as px
+from scipy.stats import chi2_contingency
+
 def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Category"):
     """
-    Perform chi-square test and plot success rates by category.
+    Perform chi-square test and plot success rates by category using Plotly.
     
     Args:
         success_data (pd.DataFrame): DataFrame containing success and failure counts with a 'Success_Rate' column.
@@ -465,22 +549,42 @@ def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Cat
     chi2, p_value, _, _ = chi2_contingency(contingency_table)
 
     # Display chi-square test results
-    print(f"Chi-square test result: chi2 = {chi2}, p-value = {p_value}")
+    print(f"Chi-square test result: chi2 = {chi2:.2f}, p-value = {p_value:.4f}")
     if p_value < 0.05:
         print("Statistically significant association between category and RfA success.")
     else:
         print("No statistically significant association between category and RfA success.")
 
-    # Plotting success rates by category
+    # Sort data by success rate
     success_data_sorted = success_data.sort_values(by='Success_Rate', ascending=False)
-    plt.figure(figsize=(12, 8))
-    plt.barh(success_data_sorted.index, success_data_sorted['Success_Rate'] * 100, color='skyblue')  # Convert rate to percentage
-    plt.xlabel('Success Rate (%)')
-    plt.ylabel('Category')
-    plt.title(title)
-    plt.tight_layout()
-    plt.show()
 
+    # Plot success rates using Plotly
+    fig = px.bar(
+        success_data_sorted,
+        x='Success_Rate',
+        y=success_data_sorted.index,
+        orientation='h',
+        title=title,
+        text=success_data_sorted['Success_Rate'].apply(lambda x: f"{x:.2%}"),
+        labels={'Success_Rate': 'Success Rate (%)', 'index': 'Category'},
+        template='plotly_white'
+    )
+
+    # Customize layout
+    fig.update_traces(marker_color='skyblue', textposition='auto')
+    fig.update_layout(
+        xaxis_title="Success Rate (%)",
+        yaxis_title="Category",
+        yaxis=dict(autorange="reversed")  # Reverse order for horizontal bar chart
+    )
+
+    # Save the plot as an HTML file
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+    with open("docs/_includes/plots/success_rates_by_category.html", "w") as f:
+        f.write(graph_html)
+
+    # Show the figure
+    fig.show()
 
 
 
@@ -513,6 +617,19 @@ def load_user_categories(json_file):
 
 # Function to plot score distribution in groups of categories based on user count
 def plot_score_distribution_grouped(data, categories_df, selected_categories, score_column='total_score', min_count=20):
+    """
+    Plot score distributions for grouped categories using Plotly.
+    
+    Args:
+        data (pd.DataFrame): Main DataFrame containing scores and usernames.
+        categories_df (pd.DataFrame): DataFrame containing usernames and their categories.
+        selected_categories (list): List of selected categories to include.
+        score_column (str): Column name for the scores.
+        min_count (int): Minimum number of people required in a category to include it.
+    
+    Returns:
+        None
+    """
     # Convert score_column to numeric, coercing errors to NaN
     data[score_column] = pd.to_numeric(data[score_column], errors='coerce')
     data = data.dropna(subset=[score_column])
@@ -525,16 +642,16 @@ def plot_score_distribution_grouped(data, categories_df, selected_categories, sc
 
     # Calculate the number of people per category
     category_counts = data['Category'].value_counts()
-    
+
     # Filter out categories with fewer than the minimum required count
     valid_categories = category_counts[category_counts >= min_count].index
     data = data[data['Category'].isin(valid_categories)]
 
-    # Group categories by count ranges (e.g., categories with similar user counts)
-    # Define group ranges based on quantiles or fixed intervals for simplicity
-    count_bins = np.linspace(category_counts[valid_categories].min(), category_counts[valid_categories].max(), num=5)
+    # Group categories by count ranges
+    count_bins = np.linspace(category_counts[valid_categories].min(), 
+                              category_counts[valid_categories].max(), num=5)
     category_groups = {f'Group {i+1}': [] for i in range(len(count_bins)-1)}
-    
+
     for category, count in category_counts[valid_categories].items():
         for i in range(len(count_bins) - 1):
             if count_bins[i] <= count < count_bins[i + 1]:
@@ -542,17 +659,45 @@ def plot_score_distribution_grouped(data, categories_df, selected_categories, sc
                 break
 
     # Plot score distributions for each group of categories
-    for i, (group_name, group_categories) in enumerate(category_groups.items()):
+    for group_name, group_categories in category_groups.items():
         if group_categories:  # Only plot if the group has categories
             min_count_in_group = min(category_counts[group_categories])
             max_count_in_group = max(category_counts[group_categories])
-            plt.figure(figsize=(14, 8))
-            sns.boxplot(x=score_column, y='Category', data=data[data['Category'].isin(group_categories)], orient='h')
-            plt.xlabel('Score')
-            plt.ylabel('Category')
-            plt.title(f'{group_name} - Score Distribution for Categories with {min_count_in_group}-{max_count_in_group} People')
-            plt.tight_layout()
-            plt.show()
+
+            # Create a subset for the current group
+            group_data = data[data['Category'].isin(group_categories)]
+
+            # Create an interactive box plot
+            fig = px.box(
+                group_data,
+                x=score_column,
+                y='Category',
+                color='Category',
+                title=f'{group_name} - Score Distribution for Categories with {min_count_in_group}-{max_count_in_group} People',
+                labels={score_column: 'Score', 'Category': 'Category'},
+                template='plotly_white',
+                orientation='h'
+            )
+
+            # Customize layout
+            fig.update_layout(
+                xaxis_title="Score",
+                yaxis_title="Category",
+                showlegend=False
+            )
+
+            # Save the plot as HTML
+            graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+            filename = f"docs/_includes/plots/{group_name.replace(' ', '_').lower()}_score_distribution.html"
+            with open(filename, "w") as f:
+                f.write(graph_html)
+
+            # Show the figure
+            fig.show()
+            graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+            with open("docs/_includes/plots/scores_distrib_grouped.html", "w") as f:
+                f.write(graph_html)
+
 
 # Example usage
 data = load_data('data/scores.csv')  # Load CSV data
