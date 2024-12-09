@@ -23,7 +23,7 @@ The dataset, meticulously crawled and parsed, includes:
 
 ### Data Augmentation
 
-To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise.
+To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise. Furthermore, we scraped adminscores for each user, a score computed from different statistics that yields a measure of "reputation/activity" of the candidate/user.
 
 
 ## How Are RfAs Decided?
