@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 #################
 ## Outcomes vs approbation rates
@@ -115,27 +116,36 @@ def plot_success_rates(file_path):
 ## Plot admin scores histogram
 ############################
 def plot_admin_scores_hist(filepath):
+
     scores = pd.read_csv(filepath)
+    scores.rename(columns={'total_score': 'Admin score'}, inplace=True)
+    # Créer l'histogramme avec Plotly
+    fig = px.histogram(
+        scores,
+        x='Admin score',
+        nbins=20,  # Nombre de barres
+        color_discrete_sequence=['dodgerblue'],  # Couleur moderne
+        opacity=0.7  # Transparence des barres pour un rendu plus élégant
+    )
+    fig.update_layout(bargap=0.1)
 
-    plt.figure(figsize=(10, 6))
-
-    sns.histplot(
-        data=scores,
-        x='total_score',
-        bins=20,  # Nombre de barres
-        color='dodgerblue',  # Couleur moderne
-        kde=True,  # Ajout de la courbe KDE pour mieux visualiser la distribution
-        alpha=0.7  # Transparence des barres pour un rendu plus élégant
+    # Mise en page et style
+    fig.update_layout(
+        title=dict(font=dict(size=16, family='Arial', color='black'), pad=dict(b=20)),
+        xaxis_title=dict(text='Admin Score', font=dict(size=14, color='black')),
+        yaxis_title=dict(text='Frequency', font=dict(size=14, color='black')),
+        xaxis=dict(tickfont=dict(size=12)),
+        yaxis=dict(tickfont=dict(size=12)),
+        template='plotly_white'
     )
 
-    plt.title("Distribution of Admin Scores", fontsize=16, fontweight='bold', pad=20)
-    plt.xlabel("Admin Score", fontsize=14, fontweight='bold')
-    plt.ylabel("Frequency", fontsize=14, fontweight='bold')
+    # Afficher l'histogramme
+    fig.show()
 
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12)
+    # Exporter le graphique en HTML div
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    plt.show()
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/admin_score_histogram.html", "w") as f:
+        f.write(graph_html)
 
