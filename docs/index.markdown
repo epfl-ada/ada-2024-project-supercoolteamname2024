@@ -73,6 +73,8 @@ Below is the distribution of Admin Scores across users:
 
 {% include plots/Distribution_Admin_Scores.html %}
 
+The second graph presents two boxplots comparing the distribution of Admin Scores between users who were accepted as administrators and those who were rejected. The green box for the accepted group shows generally higher median scores and a broader distribution extending well above 800, with some values reaching close to the maximum possible score. This suggests that most successful candidates tend to have strong engagement metrics. In contrast, the red box for the rejected group is centered lower, indicating that their typical scores cluster closer to the mid-range and rarely approach the upper end. 
+
 ---
 
 # Are users categorizable ?  
