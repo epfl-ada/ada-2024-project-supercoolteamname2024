@@ -532,7 +532,7 @@ def analyze_success_failure(df_vote, title="Success and Failure Analysis by Cate
 
     # Save Plot 2 as HTML
     graph_html2 = fig2.to_html(full_html=False, include_plotlyjs='cdn')
-    with open("docs/_includes/plots/success_rates.html", "w") as f:
+    with open("docs/_includes/plots/success_rates_ed.html", "w") as f:
         f.write(graph_html2)
 
     # Return processed data for further analysis

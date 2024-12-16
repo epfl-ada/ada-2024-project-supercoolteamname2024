@@ -52,7 +52,7 @@ We can observe a significant decline in both the success rate of RfAs and the nu
 
 By 2013, we see an interesting shift: the success rate begins to rise again, while the number of RfAs has reached its lowest point. This trend may suggest that stricter evaluation processes or changing community standards contributed to the decline in RfA success and participation over the years.
 
-{% include plots/success_rates.html %}
+{% include plots/success_rates_ed.html %}
 
 ## Do voter behaviors remain stable over time, or are there signs of shifting trends?
 To analyze voter behavior trends over time, we focused on the 100 most active voters, defined by their total votes and participation in at least two years. Using the positivity ratio — the proportion of positive votes — we applied linear regression to classify trends as "More Lenient" (increasing positivity), "More Strict" (decreasing positivity), or "No Significant Change".
