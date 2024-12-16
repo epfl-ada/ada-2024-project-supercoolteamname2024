@@ -53,8 +53,12 @@ By 2013, we see an interesting shift: the success rate begins to rise again, whi
 
 {% include plots/success_rates.html %}
 
-To analyze voter behavior trends over time, we focused on the 100 most active voters—those with the highest total votes and participation in at least two years. Using a positivity ratio (the proportion of positive votes), we applied linear regression to classify trends as "More Lenient" (increasing positivity), "More Strict" (decreasing positivity), or "No Significant Change" (no significant trend). Most voters (83) showed "No Significant Change," reflecting stable behavior, while 14 showed a "More Lenient" trend, and 3 became "More Strict." Testing larger samples (e.g., 150 or 200 voters) yielded similar proportions, suggesting consistent overall patterns. These results highlight that while most voters are consistent, a small minority exhibit meaningful behavioral shifts over time.
+## Do voter behaviors remain stable over time, or are there signs of shifting trends?
+To analyze voter behavior trends over time, we focused on the 100 most active voters, defined by their total votes and participation in at least two years. Using the positivity ratio — the proportion of positive votes — we applied linear regression to classify trends as "More Lenient" (increasing positivity), "More Strict" (decreasing positivity), or "No Significant Change".
 
+The majority of voters showed no significant change, reflecting stable behavior. Meanwhile, 14 voters exhibited a more lenient trend, and only 3 became more strict. Testing larger samples, such as 150 or 200 voters, produced similar proportions, highlighting consistent overall patterns.
+
+These results suggest that while most voters maintain stable behavior, a small minority exhibit meaningful shifts over time
 {% include plots/trends.html %}
 
 
