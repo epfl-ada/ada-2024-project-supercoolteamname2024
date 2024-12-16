@@ -1,10 +1,13 @@
 /* Global styles */
+/* Rend la bannière pleine largeur */
+
+
 body {
   font-family: "Georgia", "Times New Roman", serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
+  background-color: #fff;
   color: #202122;
 }
 
@@ -14,15 +17,12 @@ body {
   margin: 0 auto;
   padding: 20px;
   background: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Header */
 header {
   text-align: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
 }
 
@@ -71,16 +71,16 @@ a:hover {
   text-decoration: underline;
 }
 /* Conteneur principal de la bannière */
-.banner-header {
-  position: relative;
-  text-align: center;
-  color: white;
+/* Rend la bannière pleine largeur */
+.full-width-banner {
+  width: 100vw; /* Utilise toute la largeur de la fenêtre */
+  margin-left: calc(-50vw + 50%); /* Compense les marges pour centrer */
+  margin-right: calc(-50vw + 50%);
 }
 
-.image-container {
-  position: relative; /* Nécessaire pour positionner la signature */
-  display: inline-block;
-  width: 100%; /* L'image et les textes occupent toute la largeur */
+.image-container img {
+  width: 100%; /* Assure que l'image occupe toute la largeur */
+  object-fit: cover; /* Assure un bon rendu sans déformation */
 }
 
 .image-container img {
@@ -100,6 +100,7 @@ a:hover {
 
 .banner-content h1 {
   font-size: 2.5em;
+  transform: translateY(+50%);
   margin: 0;
 }
 
@@ -110,12 +111,16 @@ a:hover {
 
 /* Signature */
 .signature {
-  position: absolute; /* Place la signature par rapport à .image-container */
-  bottom: 10px; /* Place la signature à 10px du bas de l'image */
+  position: absolute; /* Place la signature par rapport au conteneur parent */
+  bottom: 5%; /* Ajuste la position verticale pour rester à l'intérieur */
   left: 50%; /* Centre horizontalement */
   transform: translateX(-50%);
   font-size: 0.9em;
   font-style: italic;
   color: white; /* Texte visible sur l'image */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Lisibilité améliorée */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Améliore la lisibilité */
+  padding: 0 10px; /* Ajoute un peu d'espace si nécessaire */
+  box-sizing: border-box; /* Gère le padding correctement */
+  max-width: 90%; /* Empêche le texte de dépasser les bords */
+  overflow-wrap: break-word; /* Gère les longues chaînes de texte */
 }
