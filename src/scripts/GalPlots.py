@@ -121,7 +121,8 @@ def plot_success_rates(file_path):
         margin=dict(l=50, r=50, t=80, b=50)
     )
     
-    fig.show()
+    #fig.show()
+    fig.show(renderer="png")
     # Exporter le graphique en HTML div
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
@@ -158,8 +159,8 @@ def plot_admin_scores_hist(filepath):
     )
 
     # Afficher l'histogramme
-    fig.show()
-
+    #fig.show()
+    fig.show(renderer="png")
     # Exporter le graphique en HTML div
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 

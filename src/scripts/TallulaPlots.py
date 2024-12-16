@@ -82,7 +82,8 @@ def Distribution_Admin_Scores(filepath):
     )
 
     
-    fig.show()
+    fig.show(renderer="png")
+
 
     # Exporter le graphique en HTML div
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
@@ -241,7 +242,7 @@ def Comparison_Vote_Category(filepath):
         xaxis_tickangle=45
     )
 
-    fig.show()
+    fig.show(renderer="png")
      # Exporter le graphique en HTML div
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
@@ -290,7 +291,7 @@ def Distribution_Admin_Score_Category(filepath):
         xaxis={'categoryorder':'total descending'}
     )
 
-    fig.show()
+    fig.show(renderer="png")
     # Exporter le graphique en HTML div
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 

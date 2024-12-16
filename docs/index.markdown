@@ -43,15 +43,15 @@ The plot above shows the number of times an RfA (Request for Adminship) was eith
 
 ---
 
-# Expectation and Tolerance of Community Over Time
+# Expectation and judgment of community over time
 
-## How Did Success Rate Evolve with Time?
+## How did success rate evolve with time?
 
 We can observe that initially, most RfAs were accepted, but the success rate has declined steadily year after year.
 
 {% include plots/success_rates.html %}
 
-Are some People changing their tolerance level regarding the positiv/negativ vote ratio? Some of them may become stricter or leaner?
+Are some people changing their judgment level regarding the positive/negative vote ratio? Some of them may become stricter or leaner? TO CHANGe
 
 {% include plots/trends.html %}
 
@@ -60,9 +60,9 @@ Are some People changing their tolerance level regarding the positiv/negativ vot
 
 # Are some voters more influential ?
 
-## Understanding the Admin Score
+## Understanding the admin core
 
-The **Admin Score** is a tool designed to provide a quick overview of how "admin-worthy" a user is on Wikipedia. It evaluates various factors of user activity, each weighted by specific multipliers. Key factors include account age, edit count, participation in key activities like AFDs (Articles for Deletion) and AIV (Administrator Intervention Against Vandalism), and the use of edit summaries. Each factor is capped at 100, and the total possible Admin Score is **1200**. This score gives a simplified but insightful view of a user's contributions and reliability as a potential administrator.
+The **Admin Score** is a tool designed to provide a quick overview of how "admin-worthy" a user is on Wikipedia. It evaluates various factors of user activity, each weighted by specific multipliers. Key factors include account age, edit count, participation in key activities like AFDs (Articles for Deletion) and AIV (Administrator Intervention Against Vandalism), and the use of edit summaries. Each factor is capped at 100. This score gives a simplified but insightful view of a user's contributions and reliability as a potential administrator.
 
 Below is the distribution of Admin Scores across users:
 {% include plots/admin_score_histogram.html %}
