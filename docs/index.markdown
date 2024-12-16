@@ -9,11 +9,11 @@ The **Request for Adminship (RfA)** process is a pivotal aspect of Wikipedia's c
 
 ---
 
-## Project Overview: Analyzing RfA Votes
+## Project overview: analyzing RfA votes
 
 Our project explores the dynamics of the RfA process through a comprehensive analysis of voting patterns and outcomes. Using a dataset containing all votes cast between 2003 (when the RfA process was adopted) and May 2013, we aim to uncover insights into the social and structural aspects of Wikipedia's governance.
 
-### The Dataset
+### The dataset
 
 The dataset, meticulously crawled and parsed, includes:
 
@@ -21,12 +21,12 @@ The dataset, meticulously crawled and parsed, includes:
 - **11,381 users** involved in the process as voters or candidates.
 - Multiple RfA attempts by some candidates, allowing us to analyze repeated patterns of support or opposition.
 
-### Data Augmentation
+### Data augmentation
 
 To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise.
 
 
-## How Are RfAs Decided?
+## How are RfAs decided?
 
 Although the RfA process allows any Wikipedia member to vote (support, oppose, or remain neutral), these votes are purely **consultative**. The final decision is made by Wikipedia's bureaucrats, a smaller group of highly trusted users. Bureaucrats evaluate the votes and comments to determine if there is a **community consensus**.
 
