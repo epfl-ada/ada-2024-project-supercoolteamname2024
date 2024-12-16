@@ -390,9 +390,9 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
         voter_data = positivity_ratios[positivity_ratios[src_column] == voter]
         if len(voter_data) > 2:  # Ensure more than two years of data
             slope, _, _, p_value, _ = linregress(voter_data['Year'], voter_data['Positivity_Ratio'])
-            trend = 'No Significant Change'
+            trend = 'No Signif. Change'
             if slope > 0 and p_value < 0.05:
-                trend = 'More Chill'
+                trend = 'More Lenient'
             elif slope < 0 and p_value < 0.05:
                 trend = 'More Strict'
             trends.append({
