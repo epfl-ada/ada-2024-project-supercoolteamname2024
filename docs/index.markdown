@@ -90,9 +90,13 @@ Ask LLM to categorize into different themes
 
 {% include plots/categories.html %}
 
+We aimed to determine whether the category a user belongs to influences the RfA outcome. To explore this, we analyzed success and failure trends across categories by calculating the total number of successes and failures, as well as their respective success rates. Using a chi-square test for independence, we examined whether the distribution of outcomes varied significantly between categories. The stacked bar chart highlights raw counts, with successes dominating in categories like "Government", "Sciences", "Technology", "Entertainment" and "Culture" while failures are more prevalent in others. The success rate chart complements this by providing a clearer percentage-based view, showcasing categories with consistently high success rates. The statistical test confirmed significant differences, reinforcing the idea that category-specific dynamics significantly impact outcomes. These findings also validate the coherence of our category labeling approach.
 {% include plots/success_rates_by_category.html %}
 
 {% include plots/Distribution_Admin_Score_Category.html %}
+
+We investigated whether the level of support varies depending on whether a voter’s category matches the category being evaluated. For each category, we calculated support rates (percentage of positive votes) within the same category and compared them to support rates from voters in different categories. 
+In most cases, voters from different categories tend to be stricter with each others than those within the same category. This suggests that evaluations from within a category may be leaner. These patterns provide insights into how community dynamics and categorical perspectives influence voting behavior.
 
 {% include plots/Comparison_Vote_Category.html %}
 
