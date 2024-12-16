@@ -346,18 +346,20 @@ import pandas as pd
 from scipy.stats import linregress
 import plotly.express as px
 
+
 def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_column='SRC'):
     """
-    Analyze voter trends over time using linear regression on positivity ratios and visualize using Plotly.
-    
+    Analyze voter trends over time for the most active voters using linear regression on positivity ratios
+    and visualize the results using Plotly.
+
     Args:
         df_vote (pd.DataFrame): DataFrame containing voting data with date, voter ID, and vote columns.
         date_column (str): Column name for the date of votes.
         vote_column (str): Column name for vote values (e.g., 1 for positive, -1 for negative).
         src_column (str): Column name for voter ID.
-    
+
     Returns:
-        pd.DataFrame: A DataFrame summarizing voter trends.
+        pd.DataFrame: A DataFrame summarizing voter trends for the top 100 most active voters.
     """
     # Ensure 'date_column' is datetime and extract 'Year'
     df_vote['Date'] = pd.to_datetime(df_vote[date_column], errors='coerce', format='%H:%M, %d %B %Y')
@@ -365,6 +367,17 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
 
     # Drop rows with invalid dates
     df_vote = df_vote.dropna(subset=['Year'])
+
+    # Count votes per voter and filter the most active voters
+    voter_activity = df_vote.groupby(src_column)['Year'].agg(['nunique', 'count']).reset_index()
+    voter_activity.columns = [src_column, 'Years_Participated', 'Total_Votes']
+
+    # Select voters with at least 2 years of participation and sort by total votes
+    active_voters = voter_activity[voter_activity['Years_Participated'] >= 2]
+    active_voters = active_voters.sort_values('Total_Votes', ascending=False).head(109)
+
+    # Filter the original DataFrame to include only the most active voters
+    df_vote = df_vote[df_vote[src_column].isin(active_voters[src_column])]
 
     # Calculate positivity ratios per voter per year
     positivity_ratios = df_vote.groupby([src_column, 'Year'])[vote_column].apply(
@@ -406,7 +419,7 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
         y='Count',
         color='Trend',
         text='Count',
-        title='Trend Analysis of Voter Positivity',
+        title='Trend Analysis of Voter Positivity (Top 100 Most Active Voters)',
         labels={'Trend': 'Trend', 'Count': 'Number of Voters'},
         template='plotly_white'
     )
@@ -420,10 +433,10 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
     )
 
     fig.show()
-    
+
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-    # Enregistrer le HTML dans un fichier
+    # Save the HTML to a file
     with open("docs/_includes/plots/trends.html", "w") as f:
         f.write(graph_html)
 
