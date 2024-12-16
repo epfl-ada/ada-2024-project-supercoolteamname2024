@@ -14,7 +14,7 @@ The **Request for Adminship (RfA)** process is a pivotal aspect of Wikipedia's c
 
 Our project explores the dynamics of the RfA process through a comprehensive analysis of voting patterns and outcomes. Using a dataset containing all votes cast between 2003 (when the RfA process was adopted) and May 2013, we aim to uncover insights into the social and structural aspects of Wikipedia's governance.
 
-### The datasetf
+### The dataset
 
 The dataset, meticulously crawled and parsed, includes:
 
