@@ -101,3 +101,6 @@ In most cases, voters from different categories tend to be stricter with each ot
 {% include plots/Comparison_Vote_Category.html %}
 
 {% include plots/communities_graph.html %}
+
+
+{% include plots/communities_graph.html %}
