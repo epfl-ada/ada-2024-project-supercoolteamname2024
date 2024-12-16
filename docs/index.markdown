@@ -8,6 +8,8 @@ title: "Admin, Baby, One More Time!"
 The **Request for Adminship (RfA)** process is a pivotal aspect of Wikipedia's community-driven governance. It is the procedure through which contributors nominate themselves or others to gain administrative privileges, granting access to critical tools for maintaining the quality and integrity of Wikipedia. However, the decision to grant adminship is not taken lightly and relies on a rigorous vetting process.
 
 ---
+{% include plots/communities_graph.html %}
+
 
 ## Project overview: analyzing RfA votes
 
