@@ -116,8 +116,6 @@ def plot_success_rates(file_path):
         yaxis2=dict(title="Number of RFAs", overlaying="y", side="right"),
         legend=dict(x=0.5, y=1.15, orientation="h", xanchor="center"),
         template="plotly_white",
-        width=1000,
-        height=600,
         margin=dict(l=50, r=50, t=80, b=50)
     )
     

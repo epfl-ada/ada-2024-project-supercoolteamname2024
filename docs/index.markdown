@@ -23,7 +23,7 @@ The dataset, meticulously crawled and parsed, includes:
 
 ### Data augmentation
 
-To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise.
+To better categorize users, we augmented the dataset by scraping additional data from Wikipedia. Specifically, we extracted the "admin score" of each user from xTools and the 10 most edited pages for each user, providing valuable context about their areas of contribution and expertise.
 
 
 ## How are RfAs decided?
@@ -47,11 +47,13 @@ The plot above shows the number of times an RfA (Request for Adminship) was eith
 
 ## How did success rate evolve with time?
 
-We can observe that initially, most RfAs were accepted, but the success rate has declined steadily year after year.
+We can observe a significant decline in both the success rate of RfAs and the number of RfAs over time. In the early years (2003-2006), the success rate was notably high, even reaching 100% in 2003, despite a sharp increase in the number of RfAs. However, from 2007 onward, the success rate dropped below 50% and remained low, while the number of RfAs also steadily decreased.
+
+By 2013, we see an interesting shift: the success rate begins to rise again, while the number of RfAs has reached its lowest point. This trend may suggest that stricter evaluation processes or changing community standards contributed to the decline in RfA success and participation over the years.
 
 {% include plots/success_rates.html %}
 
-Are some people changing their judgment level regarding the positive/negative vote ratio? Some of them may become stricter or leaner? TO CHANGe
+To analyze voter behavior trends over time, we focused on the 100 most active voters—those with the highest total votes and participation in at least two years. Using a positivity ratio (the proportion of positive votes), we applied linear regression to classify trends as "More Lenient" (increasing positivity), "More Strict" (decreasing positivity), or "No Significant Change" (no significant trend). Most voters (83) showed "No Significant Change," reflecting stable behavior, while 14 showed a "More Lenient" trend, and 3 became "More Strict." Testing larger samples (e.g., 150 or 200 voters) yielded similar proportions, suggesting consistent overall patterns. These results highlight that while most voters are consistent, a small minority exhibit meaningful behavioral shifts over time.
 
 {% include plots/trends.html %}
 
