@@ -88,9 +88,7 @@ The second graph presents two boxplots comparing the distribution of Admin Score
 
 Ask LLM to categorize into different themes
 
-
 {% include plots/categories.html %}
-
 
 {% include plots/success_rates_by_category.html %}
 
@@ -101,3 +99,4 @@ Ask LLM to categorize into different themes
 {% include plots/communities_graph.html %}
 
 
+{% include plots/communities_graph.html %}
