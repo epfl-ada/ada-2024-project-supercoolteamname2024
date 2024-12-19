@@ -203,43 +203,29 @@ def Comparison_Vote_Category(filepath):
     fig.add_trace(go.Bar(
         x=top_15_categories,
         y=same_category_means,
-        name='Mean (same category)',
-        offsetgroup=0
+        name='Same category',
+        offsetgroup=0,
+        text=[f'p={p_values[i]:.2e}' if p_values[i] is not None and not np.isnan(p_values[i]) else 'N/A' for i in range(len(top_15_categories))],
+        hovertemplate='<b>Category:</b> %{x}<br><b>Same category:</b> %{y}<br><b>P-value:</b> %{text}<extra></extra>'
     ))
 
     # Bar for different category mean votes
     fig.add_trace(go.Bar(
         x=top_15_categories,
         y=diff_category_means,
-        name='Mean (different category)',
-        offsetgroup=1
+        name='Different category',
+        offsetgroup=1,
+        text=[f'p={p_values[i]:.2e}' if p_values[i] is not None and not np.isnan(p_values[i]) else 'N/A' for i in range(len(top_15_categories))],
+        hovertemplate='<b>Category:</b> %{x}<br><b>Different category:</b> %{y}<br><b>P-value:</b> %{text}<extra></extra>'
     ))
 
-    # Add p-value annotations
-    annotations = []
-    for i, cat in enumerate(top_15_categories):
-        p_val = p_values[i]
-        if p_val is not None and not np.isnan(p_val):
-            # Get the max height of the two bars
-            y_max = max(
-                same_category_means[i] if same_category_means[i] is not None and not np.isnan(same_category_means[i]) else 0,
-                diff_category_means[i] if diff_category_means[i] is not None and not np.isnan(diff_category_means[i]) else 0
-            )
-            annotations.append(dict(
-                x=cat,
-                y=y_max + 0.05,
-                text=f'p={p_val:.3f}',
-                showarrow=False,
-                xanchor='center',
-                yanchor='bottom'
-            ))
 
     fig.update_layout(
-        title="Comparison of vote means for the top 15 most frequent categories<br>(Same category vs Different category)",
+        title="Comparison of vote means for the top 15 most frequent categories<br> (Same category vs Different category)",
         yaxis_title='Mean vote',
         barmode='group',
-        annotations=annotations,
-        xaxis_tickangle=45
+        xaxis_tickangle=45,
+        plot_bgcolor='white'
     )
 
     fig.show(renderer="png")
@@ -297,4 +283,39 @@ def Distribution_Admin_Score_Category(filepath):
 
     # Enregistrer le HTML dans un fichier
     with open("docs/_includes/plots/Distribution_Admin_Score_Category.html", "w") as f:
+        f.write(graph_html)
+
+
+def tableau():
+    
+    dataframe = pd.read_csv("data/all_features_dataframe.csv")
+    
+    
+    lignes_aleatoires = dataframe.sample(n=3, random_state=30)
+    
+  
+    fig = go.Figure(data=[
+        go.Table(
+            header=dict(
+                values=list(lignes_aleatoires.columns),
+                fill_color="lightblue",
+                align="center",
+                font=dict(color="black", size=10)
+            ),
+            cells=dict(
+                values=[lignes_aleatoires[col] for col in lignes_aleatoires.columns],
+                fill_color="white",
+                align="center",
+                font=dict(color="black", size=10)
+            )
+        )
+    ])
+    
+    
+    fig.show()
+    # Exporter le graphique en HTML div
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+    # Enregistrer le HTML dans un fichier
+    with open("docs/_includes/plots/tableau.html", "w") as f:
         f.write(graph_html)
