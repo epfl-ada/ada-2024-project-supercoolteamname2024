@@ -124,3 +124,8 @@ a:hover {
   max-width: 90%; /* Empêche le texte de dépasser les bords */
   overflow-wrap: break-word; /* Gère les longues chaînes de texte */
 }
+
+body, html {
+  margin: 0;
+  padding: 0;
+}

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Admin, Baby, One More Time!"
+title: "The hidden agenda of Wikipedia's RfAs"
 ---
 
 # Requests for Adminship on Wikipedia
