@@ -67,7 +67,9 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - LLM
   - Clustering
 - Edouard:
-  - Chicken Saté
-  - Stats
+  - Statistics
+  - Time Series Analysis 
 - Tallula:
-  - ???
+  - Statistics
+  - Story-telling
+  - Website 
