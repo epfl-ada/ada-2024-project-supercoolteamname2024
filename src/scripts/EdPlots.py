@@ -17,20 +17,19 @@ import glob
 
 
 
-# Read the data from classifications.txt file
+# Read data from classifications.txt file
 file_path = os.path.join('data', 'user_categories_clean.csv')
 
-# Parse the file with careful handling for embedded commas and quotes
+# Parse file with carefully
 rows = []
 with open(file_path, 'r') as file:
     reader = csv.reader(file, delimiter=',', quotechar='"', skipinitialspace=True)
     for line in reader:
         rows.append(line)
 
-# Create a DataFrame from parsed data
+# Create a Df
 df = pd.DataFrame(rows[1:], columns=rows[0])  # Use the first row as the header
 
-# Fix incorrect splits for usernames or categories
 # Combine values if a row has more columns than expected (e.g., 5)
 fixed_rows = []
 expected_columns = len(rows[0])  # Expecting 5 columns (username + 4 categories)
@@ -54,7 +53,7 @@ categories = [
 ]
 
 
-# Display the updated DataFrame
+# Display df
 for col in df.columns[1:]:  # Exclude the first column (username)
     df[col] = df[col].apply(lambda x: x if x in categories else np.nan)
     
@@ -78,29 +77,27 @@ def plot_top_categories(df, valid_categories, top_n=15):
     Returns:
         list: The top N categories by user count.
     """
-    # Flatten all category columns and count occurrences of categories
+    # Flatten all category columns and count catégories
     flattened_categories = df.iloc[:, 1:].fillna('').values.flatten()
     category_counts = pd.Series(flattened_categories).value_counts()
     
     # Select the top N categories by user count
     top_categories = category_counts.head(top_n).index.tolist()
     
-    # Create a DataFrame for counts
+    # Create a df to count
     topic_counts_df = category_counts.reset_index()
     topic_counts_df.columns = ['Topic', 'Count']
     topic_counts_df = topic_counts_df[topic_counts_df['Topic'].isin(valid_categories)]  # Filter for valid categories
     
     # Plotting the topics with their counts using Plotly
-    fig = px.bar(topic_counts_df, x="Topic", y="Count", title="User Count by Category", 
-                 labels={"Topic": "Categories", "Count": "User Count"})
-    fig.update_layout(xaxis_tickangle=45, xaxis_title="Categories", yaxis_title="User Count", 
-                      template="plotly_white")
+    fig = px.bar(topic_counts_df, x="Topic", y="Count", title="User Count by Category", labels={"Topic": "Categories", "Count": "User Count"})
+    fig.update_layout(xaxis_tickangle=45, xaxis_title="Categories", yaxis_title="User Count", template="plotly_white")
     fig.show()
     
-    # Exporter le graphique en HTML div
+    # Exporter le graf en html
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-    # Enregistrer le HTML dans un fichier
+    # Enregistrer le HTML
     with open("docs/_includes/plots/categories.html", "w") as f:
         f.write(graph_html)
     
@@ -116,7 +113,7 @@ data = {
     "Category_Same": [],
     "SRC_Category": [],
     "TGT_Category": [],
-    "DAT": [],  # Add a column for DAT (date)
+    "DAT": [], 
 }
 
 
@@ -126,7 +123,6 @@ with open('data/wiki-RfA.txt', 'r', encoding='utf-8') as file:
     for line in file:
         line = line.strip()
         
-        # Check if line is empty (end of a record)
         if not line:
             # Save the current record if it has data and reset
             if record:
@@ -163,15 +159,9 @@ with open('data/wiki-RfA.txt', 'r', encoding='utf-8') as file:
 
 # Convert data dictionary to a DataFrame
 df_vote = pd.DataFrame(data)
-
-
-# Count the total number of NaN values in the DataFrame
+# Count the num of plots
 total_nans = df.isna().sum().sum()
-
-# Count NaN values per column
 nans_per_column = df.isna().sum()
-
-
 
 
 def plot_participation_rates(df_vote, top_categories, title="Participation Rates by Category", top_n=15):
@@ -179,36 +169,37 @@ def plot_participation_rates(df_vote, top_categories, title="Participation Rates
     Calculate and plot participation rates for the top categories using Plotly.
     
     Args:
-        df_vote (pd.DataFrame): DataFrame containing votes with 'SRC', 'SRC_Category', and 'Category_Same' columns.
-        top_categories (list): List of top categories to analyze.
-        title (str): Title for the plot.
-        top_n (int): Number of top categories to include in the analysis.
+        df_vote (pd.DataFrame): DataFrame
+        # The above code is defining a function called
+        # `top_categories` that takes a list as input.
+    
+    
+        top_categories (list):
+        title (str): titreu
+        top_n (int): Number of top categories to include
     
     Returns:
         None: Displays an interactive bar chart for participation rates.
     """
     participation_data = []
     
-    # Limit to top N categories
+    # Limit to N cat
     top_categories = top_categories[:top_n]
     
     for category in top_categories:
-        # Count unique SRC users voting within and outside the category
+        # Count unique SRC users voting within / outside their category
         within_participation = df_vote[(df_vote['SRC_Category'] == category) & (df_vote['Category_Same'] == 1)]['SRC'].nunique()
         outside_participation = df_vote[(df_vote['SRC_Category'] == category) & (df_vote['Category_Same'] == 0)]['SRC'].nunique()
 
         # Total participation for the category
         total_participation = within_participation + outside_participation
-
-        # Calculate rates
+        # Compute rates
         within_rate = within_participation / total_participation if total_participation > 0 else 0
         outside_rate = outside_participation / total_participation if total_participation > 0 else 0
         participation_data.append((category, within_rate, outside_rate))
 
     # Convert to structured format for plotting
     categories, within_category_rates, outside_category_rates = zip(*participation_data)
-
-    # Create the bar chart using Plotly
     fig = go.Figure()
 
     fig.add_trace(go.Bar(
@@ -239,25 +230,25 @@ def plot_participation_rates(df_vote, top_categories, title="Participation Rates
         xaxis_tickangle=45
     )
 
-    # Show the figure
+    # Show figue
     fig.show()
     
-    # Exporter le graphique en HTML div
+    # Exporter to html
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-    # Enregistrer le HTML dans un fichier
+    # record le HTML dans un fichier
     with open("docs/_includes/plots/participation_rates.html", "w") as f:
         f.write(graph_html)
 
 def plot_support_rates(df_vote, top_categories, title="Support Rates by Category", top_n=15):
     """
-    Calculate and plot support rates for the top categories using Plotly.
+    Calculate and plot support rates for the top categories with plotly.
     
     Args:
-        df_vote (pd.DataFrame): DataFrame containing votes with 'SRC_Category', 'VOT' columns.
-        top_categories (list): List of top categories to analyze.
-        title (str): Title for the plot.
-        top_n (int): Number of top categories to include in the analysis.
+        df_vote (pd.DataFrame): DataFrame
+        top_categories (list): List of top cat
+        title (str): Title
+        top_n (int): same as before
     
     Returns:
         pd.DataFrame: A DataFrame containing support rates and vote totals for each category.
@@ -287,20 +278,12 @@ def plot_support_rates(df_vote, top_categories, title="Support Rates by Category
         diff_support = diff_pos / total_diff if total_diff > 0 else 0
 
         # Append to analysis
-        support_data.append({
-            "Category": category,
-            "Support Rate Within Same (%)": same_support * 100,
-            "Support Rate Within Different (%)": diff_support * 100,
-            "Total Votes Within Same": total_same,
-            "Total Votes Within Different": total_diff
-        })
+        support_data.append({"Category": category,"Support Rate Within Same (%)": same_support * 100,"Support Rate Within Different (%)": diff_support * 100,"Total Votes Within Same": total_same,"Total Votes Within Different": total_diff})
 
     # Convert to DataFrame for display
     support_rates_df = pd.DataFrame(support_data)
 
-    # Create the bar chart using Plotly
     fig = go.Figure()
-
     fig.add_trace(go.Bar(
         x=support_rates_df["Category"],
         y=support_rates_df["Support Rate Within Same (%)"],
@@ -353,7 +336,7 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
     and visualize the results using Plotly.
 
     Args:
-        df_vote (pd.DataFrame): DataFrame containing voting data with date, voter ID, and vote columns.
+        df_vote (pd.DataFrame): DataFrame with votes
         date_column (str): Column name for the date of votes.
         vote_column (str): Column name for vote values (e.g., 1 for positive, -1 for negative).
         src_column (str): Column name for voter ID.
@@ -381,8 +364,7 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
 
     # Calculate positivity ratios per voter per year
     positivity_ratios = df_vote.groupby([src_column, 'Year'])[vote_column].apply(
-        lambda x: (x == 1).sum() / len(x) if len(x) > 0 else 0
-    ).reset_index(name='Positivity_Ratio')
+        lambda x: (x == 1).sum() / len(x) if len(x) > 0 else 0).reset_index(name='Positivity_Ratio')
 
     # Analyze trends using linear regression
     trends = []
@@ -412,18 +394,7 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
     # Plot the trends using Plotly
     trend_counts = trends_df['Trend'].value_counts().reset_index()
     trend_counts.columns = ['Trend', 'Count']
-
-    fig = px.bar(
-        trend_counts,
-        x='Trend',
-        y='Count',
-        color='Trend',
-        text='Count',
-        title='Trend Analysis of Voter Positivity (Top 100 Most Active Voters)',
-        labels={'Trend': 'Trend', 'Count': 'Number of Voters'},
-        template='plotly_white'
-    )
-
+    fig = px.bar(trend_counts,x='Trend',y='Count',color='Trend',text='Count',title='Trend Analysis of Voter Positivity (Top 100 Most Active Voters)',labels={'Trend': 'Trend', 'Count': 'Number of Voters'},template='plotly_white')
     # Customize appearance
     fig.update_traces(textposition='auto')
     fig.update_layout(
@@ -433,7 +404,6 @@ def analyze_voter_trends(df_vote, date_column='DAT', vote_column='VOT', src_colu
     )
 
     fig.show()
-
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
     # Save the HTML to a file
@@ -547,9 +517,6 @@ def analyze_and_plot_success_rates(success_data, title="RFA Success Rates by Cat
     Args:
         success_data (pd.DataFrame): DataFrame containing success and failure counts with a 'Success_Rate' column.
         title (str): Title for the plot.
-    
-    Returns:
-        None
     """
     from scipy.stats import chi2_contingency
     import plotly.express as px
@@ -630,14 +597,13 @@ def plot_score_distribution_grouped(data, categories_df, selected_categories, sc
     Plot score distributions for grouped categories using Plotly.
     
     Args:
-        data (pd.DataFrame): Main DataFrame containing scores and usernames.
-        categories_df (pd.DataFrame): DataFrame containing usernames and their categories.
-        selected_categories (list): List of selected categories to include.
-        score_column (str): Column name for the scores.
-        min_count (int): Minimum number of people required in a category to include it.
+        data (pd.DataFrame): Main DataFrame containing scores / usernames.
+        categories_df (pd.DataFrame): DataFrame containing usernames and categories.
+        selected_categories (list): List of selected cat
+        score_column (str): Col name for scores.
+        min_count (int): Minimum number of people required in a categ.
     
-    Returns:
-        None
+    Returns:nop
     """
     # Convert score_column to numeric, coercing errors to NaN
     data[score_column] = pd.to_numeric(data[score_column], errors='coerce')
@@ -657,10 +623,11 @@ def plot_score_distribution_grouped(data, categories_df, selected_categories, sc
     data = data[data['Category'].isin(valid_categories)]
 
     # Group categories by count ranges
-    count_bins = np.linspace(category_counts[valid_categories].min(), 
-                              category_counts[valid_categories].max(), num=5)
-    category_groups = {f'Group {i+1}': [] for i in range(len(count_bins)-1)}
-
+    count_bins = np.linspace(
+        category_counts[valid_categories].min(),
+        category_counts[valid_categories].max(),
+        num=5
+    )
     for category, count in category_counts[valid_categories].items():
         for i in range(len(count_bins) - 1):
             if count_bins[i] <= count < count_bins[i + 1]:
@@ -707,9 +674,8 @@ def plot_score_distribution_grouped(data, categories_df, selected_categories, sc
             with open("docs/_includes/plots/scores_distrib_grouped.html", "w") as f:
                 f.write(graph_html)
 
-
-# Example usage
-data = load_data('data/scores.csv')  # Load CSV data
+# Example
+data = load_data('data/scores.csv')  # Load CSV 
 categories_df = load_user_categories('data/user_categories.json')  # Load and expand user categories
 
 
