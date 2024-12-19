@@ -5,6 +5,7 @@ import re
 import numpy as np
 from scipy.stats import ttest_ind
 import plotly.graph_objects as go
+import ast 
 
 
 
@@ -287,35 +288,48 @@ def Distribution_Admin_Score_Category(filepath):
 
 
 def tableau():
-    
+   
+ 
     dataframe = pd.read_csv("data/all_features_dataframe.csv")
     
+
+    if 'total_score' in dataframe.columns:
+        dataframe = dataframe.drop(columns=['total_score'])
     
+
+    article_columns = [col for col in dataframe.columns if col.startswith('articles')]
+    for col in article_columns:
+        dataframe[col] = dataframe[col].apply(
+            lambda x: ast.literal_eval(x)[0] if isinstance(x, str) else x
+        )
+    
+
     lignes_aleatoires = dataframe.sample(n=3, random_state=30)
     
-  
+
     fig = go.Figure(data=[
         go.Table(
             header=dict(
                 values=list(lignes_aleatoires.columns),
                 fill_color="lightblue",
                 align="center",
-                font=dict(color="black", size=11)
+                font=dict(color="black", size=10)
             ),
             cells=dict(
                 values=[lignes_aleatoires[col] for col in lignes_aleatoires.columns],
                 fill_color="white",
                 align="center",
-                font=dict(color="black", size=11)
+                font=dict(color="black", size=9)
             )
         )
     ])
     
-    
-    fig.show()
-    # Exporter le graphique en HTML div
-    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-    # Enregistrer le HTML dans un fichier
+    fig.show()
+    
+
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+    
+    
     with open("docs/_includes/plots/tableau.html", "w") as f:
         f.write(graph_html)
