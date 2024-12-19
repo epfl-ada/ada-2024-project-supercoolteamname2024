@@ -300,13 +300,13 @@ def tableau():
                 values=list(lignes_aleatoires.columns),
                 fill_color="lightblue",
                 align="center",
-                font=dict(color="black", size=10)
+                font=dict(color="black", size=11)
             ),
             cells=dict(
                 values=[lignes_aleatoires[col] for col in lignes_aleatoires.columns],
                 fill_color="white",
                 align="center",
-                font=dict(color="black", size=10)
+                font=dict(color="black", size=11)
             )
         )
     ])
