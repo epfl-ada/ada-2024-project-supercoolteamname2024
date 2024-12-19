@@ -2,72 +2,71 @@ import re
 from collections import defaultdict
 import matplotlib.pyplot as plt
 
-# Replace 'filename.txt' with the path to your text file
+# change 'filename.txt' to where ur text file is
 filename = '../../data/wiki-RfA.txt'
 output_file_stats = '../../data/user_votes_stats.txt'
 output_file_usernames = '../../data/usernames.txt'
 
-# Dictionary to store vote counts for each user and a set for unique usernames
+# keep track of votes per user and unique usernames
 vote_counts = defaultdict(int)
 unique_src_entries = set()
 
-# Temporary storage for current entry data
+# temp storage for the current user and votes
 current_user = None
 current_votes = None
 
-print("Starting to read and parse the file...\n")
+print("Ok, let's start reading the file...\n")
 
-# Open and read the input file line by line
-with open(filename, 'r',encoding="utf-8") as file:
+# open the file and read it line by line
+with open(filename, 'r', encoding="utf-8") as file:
     for line_number, line in enumerate(file, start=1):
-        # Strip any extra whitespace from the line
+        # strip extra spaces or whatever
         line = line.strip()
         
-        # Check if line contains SRC and capture the user
+        # look for SRC and get the username
         src_match = re.search(r'SRC:(\S+)', line)
         if src_match:
             current_user = src_match.group(1)
-            unique_src_entries.add(current_user)  # Add user to the set of unique usernames
+            unique_src_entries.add(current_user)  # add to the list of usernames
             
-        # Check if line contains VOT and capture the votes
+        # look for VOT and get the votes
         vot_match = re.search(r'VOT:(\d+)', line)
         if vot_match:
             current_votes = int(vot_match.group(1))
 
-        # If we have both current_user and current_votes, add to vote counts
+        # when we have both user and votes, count it
         if current_user and current_votes is not None:
             vote_counts[current_user] += current_votes
 
-            # Reset for next entry
+            # clear the vars for the next round
             current_user = None
             current_votes = None
 
-# Calculate the total number of votes
+# total up all the votes
 total_votes = sum(vote_counts.values())
-print(f"\nTotal number of votes cast: {total_votes}")
+print(f"\nTotal votes cast: {total_votes}")
 
-# Sort vote counts in descending order
+# sort votes biggest to smallest
 sorted_votes = sorted(vote_counts.values(), reverse=True)
 
-# Write vote counts for each user to the stats output file
-with open(output_file_stats, 'w',encoding="utf-8") as file:
+# write vote counts to a file
+with open(output_file_stats, 'w', encoding="utf-8") as file:
     for user, votes in vote_counts.items():
         file.write(f"{user}: {votes} votes\n")
 
-# Write all unique SRC entries to the usernames output file
-with open(output_file_usernames, 'w',encoding="utf-8") as file:
-    for src in sorted(unique_src_entries):  # Optional: sort usernames alphabetically
+# write unique SRC usernames to another file
+with open(output_file_usernames, 'w', encoding="utf-8") as file:
+    for src in sorted(unique_src_entries):  # sorting not needed
         file.write(src + '\n')
 
-print(f"\nUnique SRC entries have been written to {output_file_usernames}")
-print(f"Vote statistics have been written to {output_file_stats}")
+print(f"\nSaved all SRC usernames to {output_file_usernames}")
+print(f"Wrote user vote stats to {output_file_stats}")
 
-# Plot as histogram
+# show a histogram for the votes
 plt.figure(figsize=(10, 6))
 plt.hist(sorted_votes, bins=20, edgecolor='black', alpha=0.7)
-plt.xlabel("Number of Votes Cast")
-plt.ylabel("Frequency")
-plt.title("Histogram of Votes Cast by Users (Sorted)")
+plt.xlabel("Number of votes")
+plt.ylabel("How often it happened")
+plt.title("Histogram of votes cast by users (sorted)")
 
 plt.show()
-

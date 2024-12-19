@@ -17,10 +17,10 @@ import glob
 
 
 
-# Read data from classifications.txt file
+# Read data from file
 file_path = os.path.join('data', 'user_categories_clean.csv')
 
-# Parse file with carefully
+# Parse file 
 rows = []
 with open(file_path, 'r') as file:
     reader = csv.reader(file, delimiter=',', quotechar='"', skipinitialspace=True)
@@ -30,7 +30,7 @@ with open(file_path, 'r') as file:
 # Create a Df
 df = pd.DataFrame(rows[1:], columns=rows[0])  # Use the first row as the header
 
-# Combine values if a row has more columns than expected (e.g., 5)
+# Combine values if a row has more columns than expected
 fixed_rows = []
 expected_columns = len(rows[0])  # Expecting 5 columns (username + 4 categories)
 for row in rows[1:]:
@@ -40,7 +40,7 @@ for row in rows[1:]:
     elif len(row) == expected_columns:
         fixed_rows.append(row)
 
-# Create a DataFrame from fixed rows
+# Create a df from fixed rows
 df = pd.DataFrame(fixed_rows, columns=rows[0])
 
 # Replace non-matching categories with NaN
@@ -157,7 +157,7 @@ with open('data/wiki-RfA.txt', 'r', encoding='utf-8') as file:
             key, value = match.groups()
             record[key] = value.strip()
 
-# Convert data dictionary to a DataFrame
+# Convert data dictionary to a df
 df_vote = pd.DataFrame(data)
 # Count the num of plots
 total_nans = df.isna().sum().sum()
