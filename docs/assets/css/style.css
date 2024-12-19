@@ -111,18 +111,22 @@ a:hover {
 
 /* Signature */
 .signature {
-  position: absolute; /* Place la signature par rapport au conteneur parent */
-  bottom: 5%; /* Ajuste la position verticale pour rester à l'intérieur */
-  left: 50%; /* Centre horizontalement */
+  position: absolute; 
+  bottom: 5%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   font-size: 0.9em;
   font-style: italic;
-  color: white; /* Texte visible sur l'image */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Améliore la lisibilité */
-  padding: 0 10px; /* Ajoute un peu d'espace si nécessaire */
-  box-sizing: border-box; /* Gère le padding correctement */
-  max-width: 90%; /* Empêche le texte de dépasser les bords */
-  overflow-wrap: break-word; /* Gère les longues chaînes de texte */
+  color: white;
+  -webkit-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  padding: 0 10px;
+  box-sizing: border-box;
+  max-width: 90%;
+  -webkit-overflow-wrap: break-word;
+  overflow-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond pour améliorer la lisibilité */
 }
 
 body, html {
