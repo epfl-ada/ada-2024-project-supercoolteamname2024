@@ -1,17 +1,21 @@
-/* Global styles */
-/* Rend la bannière pleine largeur */
-
+/*----------------------------------------------------------
+   RESET & GLOBAL
+----------------------------------------------------------*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: "Georgia", "Times New Roman", serif;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
   background-color: #fff;
   color: #202122;
 }
 
-/* Container */
+/*----------------------------------------------------------
+   CONTAINER
+----------------------------------------------------------*/
 #container {
   max-width: 960px;
   margin: 0 auto;
@@ -19,7 +23,9 @@ body {
   background: #fff;
 }
 
-/* Header */
+/*----------------------------------------------------------
+   HEADER
+----------------------------------------------------------*/
 header {
   text-align: center;
   margin-bottom: 20px;
@@ -41,17 +47,16 @@ header p {
   color: #555;
 }
 
-.signature {
-  font-style: italic;
-  color: #444;
-}
-
-/* Main content */
+/*----------------------------------------------------------
+   MAIN CONTENT
+----------------------------------------------------------*/
 main {
   padding: 20px;
 }
 
-/* Footer */
+/*----------------------------------------------------------
+   FOOTER
+----------------------------------------------------------*/
 footer {
   text-align: center;
   margin-top: 20px;
@@ -61,7 +66,9 @@ footer {
   padding-top: 10px;
 }
 
-/* Links */
+/*----------------------------------------------------------
+   LINKS
+----------------------------------------------------------*/
 a {
   color: #0645ad;
   text-decoration: none;
@@ -70,28 +77,39 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/* Conteneur principal de la bannière */
-/* Rend la bannière pleine largeur */
+
+/*----------------------------------------------------------
+   BANNER FULL-WIDTH
+   Utilisé pour la bannière principale
+----------------------------------------------------------*/
 .full-width-banner {
-  width: 100vw; /* Utilise toute la largeur de la fenêtre */
-  margin-left: calc(-50vw + 50%); /* Compense les marges pour centrer */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
 }
 
-.image-container img {
-  width: 100%; /* Assure que l'image occupe toute la largeur */
-  object-fit: cover; /* Assure un bon rendu sans déformation */
+/*----------------------------------------------------------
+   IMAGE CONTAINER
+   Permet le positionnement absolu des éléments enfants
+----------------------------------------------------------*/
+.image-container {
+  position: relative; /* Nécessaire pour positionner la signature par rapport à l'image */
 }
 
 .image-container img {
-  width: 100%; /* L'image occupe toute la largeur */
-  height: auto; /* Conserve le ratio d'aspect */
-  display: block; /* Évite les marges indésirables */
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
+/*----------------------------------------------------------
+   BANNER CONTENT
+   Texte superposé sur l'image
+----------------------------------------------------------*/
 .banner-content {
-  position: absolute; /* Superpose le texte sur l'image */
-  top: 0%; /* Ajustez la position en fonction de l'image */
+  position: absolute;
+  top: 0%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -100,7 +118,7 @@ a:hover {
 
 .banner-content h1 {
   font-size: 2.5em;
-  transform: translateY(+50%);
+  transform: translateY(50%);
   margin: 0;
 }
 
@@ -109,18 +127,21 @@ a:hover {
   margin: 10px 0;
 }
 
-/* Signature */
+/*----------------------------------------------------------
+   SIGNATURE
+   Texte positionné au bas de l'image
+----------------------------------------------------------*/
 .signature {
-  position: absolute; /* Place la signature par rapport au conteneur parent */
-  bottom: 5%; /* Ajuste la position verticale pour rester à l'intérieur */
-  left: 50%; /* Centre horizontalement */
+  position: absolute; 
+  bottom: 5%;
+  left: 50%;
   transform: translateX(-50%);
   font-size: 0.9em;
   font-style: italic;
-  color: white; /* Texte visible sur l'image */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Améliore la lisibilité */
-  padding: 0 10px; /* Ajoute un peu d'espace si nécessaire */
-  box-sizing: border-box; /* Gère le padding correctement */
-  max-width: 90%; /* Empêche le texte de dépasser les bords */
-  overflow-wrap: break-word; /* Gère les longues chaînes de texte */
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  padding: 0 10px;
+  box-sizing: border-box;
+  max-width: 90%;
+  overflow-wrap: break-word;
 }

@@ -51,7 +51,7 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
 - **Time Series Analysis**:
   - *Tracking changes in key metrics like vote participation rate, tolerance rate over time.*
   - *Identifying changes in votant's behavior over time, we will use classical Time Series theory tools in order to distinguish/discover trends*
-  - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? does the areas of interest matter?.*
+  - *Assessing how prior activities influence the likelihood of RfA success, does the admin scores matter? Does the areas of interest matter?*
 
 
 ## Team contribution
@@ -67,7 +67,9 @@ Our project investigates Wikipedia's Requests for Adminship (RfA) to understand 
   - LLM
   - Clustering
 - Edouard:
-  - Chicken Saté
-  - Stats
+  - Statistics
+  - Time Series Analysis 
 - Tallula:
-  - ???
+  - Statistics
+  - Story-telling
+  - Website 

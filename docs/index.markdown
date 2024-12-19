@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Admin, Baby, One More Time!"
+title: "The hidden agenda of Wikipedia's RfAs"
 ---
 
 # Requests for Adminship on Wikipedia
@@ -88,18 +88,27 @@ The second graph presents two boxplots comparing the distribution of Admin Score
 
 To explore user activity and interests, we scraped and analyzed the top 10 most modified articles for each user. We categorized these articles into four categories per user using a predefined set of categories derived from Wikipedia. To assign the most relevant categories to each article, we leveraged a language model (LLM) that classified the content based on its themes.
 
+## Categories distribution
+
 The bar chart visualizes the distribution of users across these categories, showing that broad-interest areas like "History," "Entertainment," and "Culture" dominate. More specialized categories, such as "Universe" and "Energy," have fewer users, reflecting their niche appeal. We also acknowledge that some categories may "eat each other," as overlapping themes (e.g., "Culture" and "Society") could group similar interests together. Despite this, the plot highlights the diversity of user interests and provides a clear view of how users contribute to different areas of knowledge within the community.
 
 {% include plots/categories.html %}
 
+## Outcomes by categories
+
 We aimed to determine whether the category a user belongs to influences the RfA outcome. To explore this, we analyzed success and failure trends across categories by calculating the total number of successes and failures, as well as their respective success rates. Using a chi-square test for independence, we examined whether the distribution of outcomes varied significantly between categories. The stacked bar chart highlights raw counts, with successes dominating in categories like "Government", "Sciences", "Technology", "Entertainment" and "Culture" while failures are more prevalent in others. The success rate chart complements this by providing a clearer percentage-based view, showcasing categories with consistently high success rates. The statistical test confirmed significant differences, reinforcing the idea that category-specific dynamics significantly impact outcomes. These findings also validate the coherence of our category labeling approach.
 {% include plots/success_rates_by_category.html %}
 
+## Mutual support
 
 We investigated whether the level of support varies depending on whether a voter’s category matches the category being evaluated. For each category, we calculated support rates (percentage of positive votes) within the same category and compared them to support rates from voters in different categories. 
 In most cases, voters from different categories tend to be stricter with each others than those within the same category. This suggests that evaluations from within a category may be leaner. These patterns provide insights into how community dynamics and categorical perspectives influence voting behavior.
 
 {% include plots/Comparison_Vote_Category.html %}
+
+## Clustering 
+
+![All Users graph](/assets/images/user_graph.png)
 
 {% include plots/communities_graph2.html %}
 
