@@ -90,11 +90,7 @@ To explore user activity and interests, we scraped and analyzed the top 10 most 
 
 To validate the accuracy of the assigned categories, we conducted a review on a subset of users. This analysis revealed that, in most cases, the first three categories assigned by the model aligned well with the themes of the articles. However, the fourth category often proved to be less relevant, suggesting that assigning four categories might have been excessive. 
 
-| username   |   total_score | categ1    | categ2        | categ3   | categ4   | articles1              | articles2         | articles3                 | articles4                                           | articles5                    | articles6                            | articles7                    | articles8                       | articles9                   | articles10               |
-|:-----------|--------------:|:----------|:--------------|:---------|:---------|:-----------------------|:------------------|:--------------------------|:----------------------------------------------------|:-----------------------------|:-------------------------------------|:-----------------------------|:--------------------------------|:----------------------------|:-------------------------|
-| Dewet      |           649 | Geography | Culture       | History  | Health   | ['Nelson Mandela', 53] | ['Beer', 38]      | ['South Africa', 34]      | ['Hookah', 33]                                      | ['Apartheid', 33]            | ['Cape Town', 32]                    | ['2006 in South Africa', 23] | ['History of South Africa', 20] | ['Racism', 20]              | ['Afrikaans', 20]        |
-| Gretab     |           432 | Arts      | Entertainment | History  | Society  | ['Prix de Rome', 21]   | ['La Juive', 19]  | ['Jacques Leguerney', 11] | ['Francis Poulenc', 10]                             | ["La bonne d'enfant", 8]     | ['List of compositions for harp', 6] | ['Darius Milhaud', 6]        | ['Les Six', 6]                  | ['La création du monde', 5] | ['Jacques Offenbach', 4] |
-| Encephalon |           749 | Health    | Arts          | Weather  | Politics | ['Asthma', 109]        | ['Pneumonia', 48] | ['William Moritz', 19]    | ['Facial onset sensory and motor neuronopathy', 18] | ['Ludwig van Beethoven', 17] | ['Howard Stern', 16]                 | ['Hurricane Katrina', 14]    | ['Hypokalemia', 13]             | ['Jimi Hendrix', 13]        | ['Wheeze', 13]           |
+{% include plots/tableau.html %}
 
 ## Categories distribution
 
