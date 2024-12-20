@@ -112,22 +112,34 @@ In most cases, voters from different categories tend to be stricter with each ot
 
 ## Community detection
 
-The heart of wikipedia is the **community** based decision on who is eligible to become an administrator. For the final part of this study we will try to identify these community. For this purpose an interaction network has been constructed based on the RFA data. Each node represent a user in the network, where node size is proportional to the number of interactions (votes in RFA here). Edges represent the interactions between these users. Then based o this graph, we clustered each users in a community using the Louvain method for community detection. The result is shown on the image below, where each community is represented by a color.
+At the heart of Wikipedia is the **community**-based decision about who is eligible to become an administrator. For the final part of this study we will try to identify this community. For this purpose, an interaction network has been constructed based on the RFA data. Each node represents a user in the network, where the node size is proportional to the number of interactions (here votes in RFA). The edges represent the interactions between these users. Based on this graph, we then clustered each user into a community using the Louvain community detection method. The result is shown in the image below, where each community is represented by a colour.
 
 ![All Users graph](/assets/images/user_graph2.png)
 
-With this method, we manage to extract 18 communities. Then the communities have been group in order to have a clearer visualisation. The size of the nodes represent the number of user inside a community and the edge thickness the number of interaction between the communities. The goal is then investigate the distribution of categories of each user and their admin score within a community. For this purpose, we compute the percentage of users that have the same category in their four attached categories. The three most commun categories inside a community in the display. Additionnaly, we compute the mean admin score within a cluster. The result is shown in the interactive community graph below. \
+Using this method, we managed to extract 18 municipalities. The communities were then grouped in order to have a clearer visualisation. The size of the nodes represents the number of users within a community and the thickness of the edge represents the number of interactions between communities. The aim is then to study the distribution of each user's categories and their admin score within a community. To do this, we calculate the percentage of users who have the same category in their four attached categories. The three most common categories within a community are displayed. We also calculate the average admin score within a community. The result is shown in the interactive community graph below. 
 
-By looking at the community graph, there is several interesting thing to notice. First, in the central communities (also the biggest), the main represented categories are allways *history*, *entertainment* and *culture*. This observation allign with the categories distribution that we saw previously. For small, marginal communities, however, the picture is more interesting. For example, there is a group of 10 geographers in the bottom right-hand corner (community 18) and a group of 56 scientists in the top right-hand corner (community 14). Concerning the admin score, small groups tend to have smaller admin score exept for community 12 who seem to work hard on geography subjects. The best are the community 10 with a mean admin score of 737 for 1105 people. \
-
-To concluse about community detection, we end up with interesting result by combining the result we obtain before. 
+Looking at the community graph, there are several interesting things to note. Firstly, in the central communities (which are also the largest), the main categories represented are always *history*, *entertainment* and *culture*. This observation is consistent with the distribution of categories we saw earlier. For small, marginal communities, however, the picture is more interesting. For example, there is a group of 10 geographers in the bottom right corner (community 18) and a group of 56 scientists in the top right corner (community 14). As for the admin score, small groups tend to have lower admin scores, with the exception of community 12, which seems to work hard on geography issues. The best is community 10 with an average admin score of 737 for 1105 people. 
 
 {% include plots/communities_graph3.html %}
 
 ## Conclusion
 
-To concluse about this study on Wikipedia request for adminship, we end up with interesting result by combining the result we obtain before. 
+ We end up with an interesting result when we combine the results of our analysis. Based only on the RAF dataset and especially the usernames, we collect as much information as possible. A nice collection of data has been built, containing voting records, user attributes and community structures for each user. Using this as a baseline, we were able to highlight several trends, such as the declining success rates of RfAs over time, strong concentration in broad interest topics like history, culture and entertainment, communities and power voter detection. The study we conducted provides valuable insights that could significantly benefit Wikipedia's hierarchical structure. For example, our community analysis highlights the importance of encouraging engagement in smaller, specialised groups, which could be used to diversify and strengthen Wikipedia's administrative core. It represents a milestone in the quest to improve the transparency, fairness and effectiveness of the RfA process. 
+
+To conclude this study of Wikipedia's administrative application process, we would like to emphasise the importance of remaining critical of our findings. The main difficulty was probably in finding power voters and in accurately finding some communities based on our information. Indeed, even when we arrive at some results, it is still difficult to assess whether they are representative of reality. Because of the limited amount of information available, these processes only capture a subset of the complex interaction in the real world for a community platform like wikipedia. Considering only one aspect of a complex whole can lead to inaccuracies and even biases in the conclusions we draw.
 
 
 ## References
+
+1. XTool, Feeding your data hunger, 2008-2024, v.3.20.3, \
+    https://xtools.wmcloud.org/ 
+
+2. Ollama, Llama3.1 (8b), 
+    https://ollama.com/library/llama3.1
+
+3. NeworkX, louvain_communities, 2004-2024, NetworkX Developers, \
+    https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.louvain.louvain_communities.html
+
+4. Wikipedia:Contents/Categories, 12 April 2021, \
+    https://en.wikipedia.org/wiki/Wikipedia:Contents/Categories
 
