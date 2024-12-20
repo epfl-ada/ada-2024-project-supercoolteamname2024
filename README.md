@@ -4,6 +4,10 @@
 
 Our project investigates Wikipedia's Requests for Adminship (RfA) to understand the evolving dynamics of community governance and standards. By using textual analysis (NLP), network analysis, and temporal analysis, we aim to identify how key voters, cluster appartenance, and candidate reputations have influenced RfA outcomes over time. We explore the evolution of influential "power voters," argument patterns, and candidate profiles to reveal insights into the mechanisms of online community decision-making and factors contributing to successful adminship. This study aims to offer a deep dive into the dynamics of influence, persuasion, and governance within Wikipedia’s ecosystem.
 
+## Data Story
+
+All results are presented in a data story on our website: https://epfl-ada.github.io/ada-2024-project-supercoolteamname2024/
+
 ## Research Questions
 
 - Can we detect “power voters” (influential voters) and quantify their impact on RfA outcomes? What defines their influence, how to capture it? How to make a difference bewtween someone who is an influencer and a sheep?
