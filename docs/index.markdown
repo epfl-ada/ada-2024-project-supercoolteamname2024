@@ -67,7 +67,7 @@ These results suggest that while most voters maintain stable behavior, a small m
 
 # Are some voters more influential ?
 
-## Understanding the admin core
+## Understanding the admin score
 
 The **Admin Score** is a tool designed to provide a quick overview of how "admin-worthy" a user is on Wikipedia. It evaluates various factors of user activity, each weighted by specific multipliers. Key factors include account age, edit count, participation in key activities like AFDs (Articles for Deletion) and AIV (Administrator Intervention Against Vandalism), and the use of edit summaries. Each factor is capped at 100. This score gives a simplified but insightful view of a user's contributions and reliability as a potential administrator.
 
@@ -81,6 +81,38 @@ Below is the distribution of Admin Scores across users:
 {% include plots/Distribution_Admin_Scores.html %}
 
 The second graph presents two boxplots comparing the distribution of Admin Scores between users who were accepted as administrators and those who were rejected. The green box for the accepted group shows generally higher median scores and a broader distribution extending well above 800, with some values reaching close to the maximum possible score. This suggests that most successful candidates tend to have strong engagement metrics. In contrast, the red box for the rejected group is centered lower, indicating that their typical scores cluster closer to the mid-range and rarely approach the upper end. 
+
+## Understanding power voters
+
+We define power voters by inspiring ourselves from the matrix of co-occurence, widely used in NLP to capture contextual relationships and highlight word influence. We adapt this by interpreting the users as words and each voting session as a document. We call the sum of co-occurrence values for each user participation and we combine it with the admin score to obtain our power score. Thanks to this, we have a meaningful ranking of how much influence each user has exerted on the adminship voting sessions. Below is a table of the top 10.
+
+| User           | Participation |  Admin Score |  Power Score       |  Positive Vote Ratio |  Average Polarity   |
+|----------------|---------------|---------------|---------------------|------------------------|----------------------|
+| Acalamari      | 61987         | 1300.0        | 0.8470427518867714  | 0.97365500695411       | 0.5058170978898072   |
+| Stifle         | 57998         | 1297.0        | 0.8235555798645624  | 0.629205175600739      | 0.09175541401273885  |
+| Siva1979       | 89307         | 827.0         | 0.8180769230769231  | 0.8500815788756388     | 0.451205433116883    |
+| Bearian        | 56537         | 1300.0        | 0.8165296844556916  | 0.901428571428571      | 0.4918774803149606   |
+| Juliancolton   | 41846         | 1277.0        | 0.7254326180168789  | 0.7878787878787878     | 0.3649201342281879   |
+| Malinaccier    | 47010         | 1180.0        | 0.7170367569411307  | 0.919548275862069      | 0.6415730275229358   |
+| SoWhy          | 30145         | 1300.0        | 0.6687680558977     | 0.741038565737052      | 0.45573851590106     |
+| Bibliomaniac15 | 31478         | 1279.0        | 0.6681542372034612  | 0.9300699300699301     | 0.4212738855031846   |
+| Daniel         | 29806         | 1017.0        | 0.6599470101931303  | 0.492966360856269      | 0.12659604519774012  |
+| Newyorkbrad    | 47998         | 1282.0        | 0.6598759924822003  | 0.818864097363083      | 0.4631571428571428   |
+
+## Are power voters more strict?
+
+To answer this, we explored the sentiment of the comments attached to each vote of all users that have voted in 4 or more different years. We also calculated how often they vote positively and combined all of the information in three plots:
+
+### Power Score and Positive Vote Ratio showed no significant correlation, although most people vote predominantly positively.
+{% include plots/pvr_ps.html %}
+
+### Power Score and Average Polarity are practically uncorrelated, which means that the amount of positivity/negativity in their comments does not depend on their rank.
+{% include plots/ps_ap.html %}
+
+### Positive Vote Ratio and Average Polarity presented a correlation of 0.52. This means that people who tend to speak more positively, would only vote when they are supporting the adminship request and would abstain if they're against
+
+{% include plots/pvr_ap.html %}
+
 
 ---
 
