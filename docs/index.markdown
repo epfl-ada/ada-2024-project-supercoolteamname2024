@@ -86,18 +86,19 @@ The second graph presents two boxplots comparing the distribution of Admin Score
 
 We define power voters by inspiring ourselves from the matrix of co-occurence, widely used in NLP to capture contextual relationships and highlight word influence. We adapt this by interpreting the users as words and each voting session as a document. We call the sum of co-occurrence values for each user participation and we combine it with the admin score to obtain our power score. Thanks to this, we have a meaningful ranking of how much influence each user has exerted on the adminship voting sessions. Below is a table of the top 10.
 
-| User           | Participation |  Admin Score |  Power Score       |  Positive Vote Ratio |  Average Polarity   |
-|----------------|---------------|---------------|---------------------|------------------------|----------------------|
-| Acalamari      | 61987         | 1300.0        | 0.8470427518867714  | 0.97365500695411       | 0.5058170978898072   |
-| Stifle         | 57998         | 1297.0        | 0.8235555798645624  | 0.629205175600739      | 0.09175541401273885  |
-| Siva1979       | 89307         | 827.0         | 0.8180769230769231  | 0.8500815788756388     | 0.451205433116883    |
-| Bearian        | 56537         | 1300.0        | 0.8165296844556916  | 0.901428571428571      | 0.4918774803149606   |
-| Juliancolton   | 41846         | 1277.0        | 0.7254326180168789  | 0.7878787878787878     | 0.3649201342281879   |
-| Malinaccier    | 47010         | 1180.0        | 0.7170367569411307  | 0.919548275862069      | 0.6415730275229358   |
-| SoWhy          | 30145         | 1300.0        | 0.6687680558977     | 0.741038565737052      | 0.45573851590106     |
-| Bibliomaniac15 | 31478         | 1279.0        | 0.6681542372034612  | 0.9300699300699301     | 0.4212738855031846   |
-| Daniel         | 29806         | 1017.0        | 0.6599470101931303  | 0.492966360856269      | 0.12659604519774012  |
-| Newyorkbrad    | 47998         | 1282.0        | 0.6598759924822003  | 0.818864097363083      | 0.4631571428571428   |
+| User           | Participation | Admin Score | Power Score | Positive Vote Ratio | Average Polarity |
+|----------------|---------------|-------------|-------------|----------------------|------------------|
+| Acalamari      | 61987         | 1300.0      | 0.847       | 0.974                | 0.506            |
+| Stifle         | 57998         | 1297.0      | 0.824       | 0.629                | 0.092            |
+| Siva1979       | 89307         | 827.0       | 0.818       | 0.850                | 0.451            |
+| Bearian        | 56537         | 1300.0      | 0.817       | 0.901                | 0.492            |
+| Juliancolton   | 41846         | 1277.0      | 0.725       | 0.788                | 0.365            |
+| Malinaccier    | 47010         | 1180.0      | 0.717       | 0.920                | 0.642            |
+| SoWhy          | 30145         | 1300.0      | 0.669       | 0.741                | 0.456            |
+| Bibliomaniac15 | 31478         | 1279.0      | 0.668       | 0.930                | 0.421            |
+| Daniel         | 29806         | 1017.0      | 0.660       | 0.493                | 0.127            |
+| Newyorkbrad    | 47998         | 1282.0      | 0.660       | 0.819                | 0.463            |
+
 
 ## Are power voters more strict?
 
@@ -109,7 +110,7 @@ To answer this, we explored the sentiment of the comments attached to each vote 
 ### Power Score and Average Polarity are practically uncorrelated, which means that the amount of positivity/negativity in their comments does not depend on their rank.
 {% include plots/ps_ap.html %}
 
-### Positive Vote Ratio and Average Polarity presented a correlation of 0.52. This means that people who tend to speak more positively, would only vote when they are supporting the adminship request and would abstain if they're against
+### Positive Vote Ratio and Average Polarity presented a correlation of 0.52. This means that some of the people who tend to speak more positively, would only vote when they are supporting the adminship request and would abstain if they're against.
 
 {% include plots/pvr_ap.html %}
 
