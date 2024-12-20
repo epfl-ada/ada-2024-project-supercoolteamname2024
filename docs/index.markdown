@@ -110,7 +110,7 @@ To answer this, we explored the sentiment of the comments attached to each vote 
 ### Power Score and Average Polarity are practically uncorrelated, which means that the amount of positivity/negativity in their comments does not depend on their rank.
 {% include plots/ps_ap.html %}
 
-### Positive Vote Ratio and Average Polarity presented a correlation of 0.52. This means that some of the people who tend to speak more positively, would only vote when they are supporting the adminship request and would abstain if they're against.
+### Positive Vote Ratio and Average Polarity presented a correlation of 0.52. One possible interpretation would be that some of the people who tend to speak more positively, would only vote when they are supporting the adminship request and would abstain if they're against.
 
 {% include plots/pvr_ap.html %}
 
