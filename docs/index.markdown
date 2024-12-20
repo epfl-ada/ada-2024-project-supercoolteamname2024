@@ -116,9 +116,18 @@ The heart of wikipedia is the **community** based decision on who is eligible to
 
 ![All Users graph](/assets/images/user_graph2.png)
 
-With this method, we manage to extract 18 communities. Then the communities have been group in order to have a clearer visualisation. The goal is then investigate the distribution of categories of each user and their admin score within a community. For this purpose, we compute the percentage
+With this method, we manage to extract 18 communities. Then the communities have been group in order to have a clearer visualisation. The size of the nodes represent the number of user inside a community and the edge thickness the number of interaction between the communities. The goal is then investigate the distribution of categories of each user and their admin score within a community. For this purpose, we compute the percentage of users that have the same category in their four attached categories. The three most commun categories inside a community in the display. Additionnaly, we compute the mean admin score within a cluster. The result is shown in the interactive community graph below. \
 
+By looking at the community graph, there is several interesting thing to notice. First, in the central communities (also the biggest), the main represented categories are allways *history*, *entertainment* and *culture*. This observation allign with the categories distribution that we saw previously. For small, marginal communities, however, the picture is more interesting. For example, there is a group of 10 geographers in the bottom right-hand corner (community 18) and a group of 56 scientists in the top right-hand corner (community 14). Concerning the admin score, small groups tend to have smaller admin score exept for community 12 who seem to work hard on geography subjects. The best are the community 10 with a mean admin score of 737 for 1105 people. \
 
+To concluse about community detection, we end up with interesting result by combining the result we obtain before. 
 
 {% include plots/communities_graph3.html %}
+
+## Conclusion
+
+To concluse about this study on Wikipedia request for adminship, we end up with interesting result by combining the result we obtain before. 
+
+
+## References
 
