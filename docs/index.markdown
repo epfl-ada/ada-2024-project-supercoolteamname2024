@@ -112,11 +112,13 @@ In most cases, voters from different categories tend to be stricter with each ot
 
 ## Community detection
 
-The heart of wikipedia is the *community* based decision on who is eligible to become an administrator. For the final part of this study we will try to identify these community. For this purpose an interaction network has been constructed based on the RFA data. Each node represent a user in the network, where node size is proportional to the number of interactions (votes in RFA here). Edges represent the interactions between these users. Then based o this graph, we clustered each users in a community using the Louvain method for community detection. The result is shown on the image below, where each community is represented by a color.
+The heart of wikipedia is the **community** based decision on who is eligible to become an administrator. For the final part of this study we will try to identify these community. For this purpose an interaction network has been constructed based on the RFA data. Each node represent a user in the network, where node size is proportional to the number of interactions (votes in RFA here). Edges represent the interactions between these users. Then based o this graph, we clustered each users in a community using the Louvain method for community detection. The result is shown on the image below, where each community is represented by a color.
 
 ![All Users graph](/assets/images/user_graph.png)
 
+With this method, we manage to extract 18 communities. Then the communities have been group in order to have a clearer visualisation. Th
 
 
-{% include plots/communities_graph2.html %}
+
+{% include plots/communities_graph3.html %}
 
